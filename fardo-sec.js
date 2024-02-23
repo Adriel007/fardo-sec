@@ -2,6 +2,7 @@ const fs = require('fs');
 const { exec } = require('child_process');
 
 const url = 'http://adriel007.github.io/fardo-sec';
+const urlGit = 'https://github.com/Adriel007/fardo-sec';
 
 const compareVersions = (webVersion, localVersion) => {
   if (webVersion > localVersion) {
