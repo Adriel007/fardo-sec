@@ -11,11 +11,11 @@ const compareVersions = (webVersion, localVersion) => {
       if (error) {
         console.error(`Erro ao executar git pull: ${error.message}`);
         return;
-      }
+      }/*
       if (stderr) {
         console.error(`Erro ao executar git pull: ${stderr}`);
         return;
-      }
+      }*/
       console.log(`Repositório atualizado com sucesso: ${stdout}`);
 
       exec('npm install', async (error, stdout, stderr) => {
