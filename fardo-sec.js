@@ -1,12 +1,13 @@
 const fs = require('fs');
 const { exec } = require('child_process');
 
-const url = 'http://adriel007.github.io/fardo-sec/';
+const url = 'http://adriel007.github.io/fardo-sec';
+const urlGit = 'https://github.com/adriel007/fardo-sec.git';
 
 const compareVersions = (webVersion, localVersion) => {
   if (webVersion > localVersion) {
     console.log(`Fardo Sec - Ataque de Segurança\n\n Nova versão (${webVersion}) disponível. Atualizando...\n\n`);
-    exec('git pull ' + url, async (error, stdout, stderr) => {
+    exec(`git pull ${urlGit}`, async (error, stdout, stderr) => {
       if (error) {
         console.error(`Erro ao executar git pull: ${error.message}`);
         return;
