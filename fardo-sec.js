@@ -2,7 +2,6 @@ const fs = require('fs');
 const { exec } = require('child_process');
 
 const url = 'http://adriel007.github.io/fardo-sec';
-const urlGit = 'https://github.com/adriel007/fardo-sec.git';
 
 const compareVersions = (webVersion, localVersion) => {
   if (webVersion > localVersion) {
@@ -18,7 +17,6 @@ const compareVersions = (webVersion, localVersion) => {
       }
       console.log(`Repositório atualizado com sucesso: ${stdout}`);
 
-      // Instalar dependências
       exec('npm install', async (error, stdout, stderr) => {
         if (error) {
           console.error(`Erro ao instalar as dependências: ${error.message}`);
@@ -30,7 +28,6 @@ const compareVersions = (webVersion, localVersion) => {
         }
         console.log(`Dependências instaladas com sucesso: ${stdout}`);
 
-        // Verificar se o fardo-sec antigo está sendo executado
         exec('ps aux | grep fardo-sec', async (error, stdout, stderr) => {
           if (error) {
             console.error(`Erro ao verificar processos: ${error.message}`);
@@ -54,7 +51,6 @@ const compareVersions = (webVersion, localVersion) => {
             });
           }
 
-          // Executar o novo fardo-sec
           exec('node fardo-sec.js', async (error, stdout, stderr) => {
             if (error) {
               console.error(`Erro ao executar fardo-sec: ${error.message}`);
@@ -70,7 +66,7 @@ const compareVersions = (webVersion, localVersion) => {
       });
     });
   } else {
-    console.log(`Fardo Sec - Ataque de Segurança\n\n Versão local (${localVersion}) é mais recente do que a versão da web (${webVersion}).\n\n`);
+    console.log(`Fardo Sec - Ataque de Segurança\n\n Atualizado em ${webVersion}\n\n`);
   }
 };
 
@@ -100,4 +96,4 @@ fetch(url)
     console.error('Erro ao fazer a solicitação:', error);
   });
 
-//require('./tools/menu')();
+require('./tools/menu')();
