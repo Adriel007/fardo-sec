@@ -51,22 +51,12 @@ const compareVersions = (webVersion, localVersion) => {
             });
           }
 
-          exec('node fardo-sec.js', async (error, stdout, stderr) => {
-            if (error) {
-              console.error(`Erro ao executar fardo-sec: ${error.message}`);
-              return;
-            }
-            if (stderr) {
-              console.error(`Erro ao executar fardo-sec: ${stderr}`);
-              return;
-            }
-            console.log(`fardo-sec executado com sucesso: ${stdout}`);
-          });
+          require('./tools/menu')();
         });
       });
     });
   } else {
-    console.log(`Fardo Sec - Ataque de Segurança\n\n Atualizado em ${webVersion}\n\n`);
+    require('./tools/menu')();
   }
 };
 
@@ -95,5 +85,3 @@ fetch(url)
   .catch(error => {
     console.error('Erro ao fazer a solicitação:', error);
   });
-
-require('./tools/menu')();
