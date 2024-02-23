@@ -6,19 +6,16 @@ const url = 'http://adriel007.github.io/fardo-sec/';
 const compareVersions = (webVersion, localVersion) => {
   if (webVersion > localVersion) {
     console.log(`Fardo Sec - Ataque de Segurança\n\n Nova versão (${webVersion}) disponível. Atualizando...\n\n`);
-    exec('git clone https://github.com/adriel007/fardo-sec.git', async (error, stdout, stderr) => {
+    exec('git pull ' + url, async (error, stdout, stderr) => {
       if (error) {
-        console.error(`Erro ao clonar o repositório: ${error.message}`);
+        console.error(`Erro ao executar git pull: ${error.message}`);
         return;
       }
       if (stderr) {
-        console.error(`Erro ao clonar o repositório: ${stderr}`);
+        console.error(`Erro ao executar git pull: ${stderr}`);
         return;
       }
-      console.log(`Repositório clonado com sucesso: ${stdout}`);
-
-      // Navegar até o diretório do projeto
-      process.chdir('fardo-sec');
+      console.log(`Repositório atualizado com sucesso: ${stdout}`);
 
       // Instalar dependências
       exec('npm install', async (error, stdout, stderr) => {
