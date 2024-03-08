@@ -17,12 +17,13 @@ else
     cd ..
 
     echo "Installation finished"
+    cd ..
 fi
 
 echo "Finishing..."
 
-if ! grep -q "alias fardo-sec='/data/data/com.termux/files/home/fardo-sec/fardo-sec.sh'" /data/data/com.termux/files/usr/etc/bash.bashrc; then
-    echo "alias fardo-sec='/data/data/com.termux/files/home/fardo-sec/fardo-sec.sh'" >> /data/data/com.termux/files/usr/etc/bash.bashrc
+if ! grep -q "alias fardo-sec='./fardo-sec/fardo-sec.sh'" /data/data/com.termux/files/usr/etc/bash.bashrc; then
+    echo "alias fardo-sec='./fardo-sec/fardo-sec.sh'" >> /data/data/com.termux/files/usr/etc/bash.bashrc
 fi
 
 echo "Finished"
@@ -63,6 +64,7 @@ menu() {
         read -p "Press enter to continue..."
         menu
     elif [[ "$choice" -eq 0 ]]; then
+        cd ..
         clear
         exit 0
     else
