@@ -15,9 +15,9 @@ else
     cd sherlock
     python3 -m pip install -r requirements.txt
     cd ..
-    cd ..
 
     echo "Installation finished"
+    cd ..
 fi
 
 echo "Finishing..."
@@ -35,7 +35,7 @@ FONT_RESET="\e[0m"
 menu() {
     clear
     
-    options=("Help" "Cameras" "Sherlock" "Holmes" "SSH" "Swarm" "Who" "Create Alias (shortcut)" "Load new Alias (manually)" "Exit")
+    options=("Help" "Cameras" "Sherlock" "Holmes" "SSH" "Swarm" "Who" "Create Alias (shortcut)" "Load new Alias (manually)" "Broker")
     commands=(
         "echo \"You can exec with ${FONT_GREEN}fardo-sec${FONT_RESET}\""
         "echo 'Você escolheu Cameras.'"
@@ -45,6 +45,7 @@ menu() {
         "echo 'Você escolheu Swarm.'"
         "echo 'Você escolheu Who.'"
         "echo 'clear && To create alias, scroll to bottom and write: && echo alias <name>=\"<command>\"' && sleep 3 && nano /data/data/com.termux/files/usr/etc/bash.bashrc"
+        "echo 'Broker choice'"
         "source /data/data/com.termux/files/usr/etc/bash.bashrc && clear && echo Alias updated"
     )
 
@@ -54,13 +55,15 @@ menu() {
         echo -e "${FONT_GREEN}$((i+1))${FONT_RESET}) ${options[$i]}"
     done
 
+    echo -e "${FONT_GREEN}0${FONT_RESET}) Exit"
+
     read -p "Your choice: " choice
 
     if [[ "$choice" -ge 1 && "$choice" -lt "${#options[@]}" ]]; then
         eval "${commands[$choice-1]}"
         read -p "Press enter to continue..."
         menu
-    elif [[ "$choice" -eq "${#options[@]}" ]]; then
+    elif [[ "$choice" -eq 0 ]]; then
         cd ..
         clear
         exit 0
