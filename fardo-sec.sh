@@ -1,19 +1,24 @@
-echo "Installing..."
+if [ -d "sherlock" ]; then
+    echo "Starting..."
+else
+    echo "Installing..."
 
-apt update -y
-apt upgrade -y
-pkg update -y
-pkg upgrade -y
+    apt update -y
+    apt upgrade -y
+    pkg update -y
+    pkg upgrade -y
 
-apt install -y git python3
-pkg install -y figlet
+    apt install -y git python3
+    pkg install -y figlet
 
-git clone https://github.com/sherlock-project/sherlock.git
-cd sherlock
-python3 -m pip install -r requirements.txt
-cd ..
+    git clone https://github.com/sherlock-project/sherlock.git
+    cd sherlock
+    python3 -m pip install -r requirements.txt
+    cd ..
 
-echo "Instalation finished"
+    echo "Installation finished"
+fi
+
 echo "Finishing..."
 
 if ! grep -q "alias fardo-sec='./fardo-sec/fardo-sec.sh'" /data/data/com.termux/files/usr/etc/bash.bashrc; then
