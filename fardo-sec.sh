@@ -16,8 +16,8 @@ cd ..
 echo "Instalation finished"
 echo "Finishing..."
 
-if ! grep -q "alias fardo-sec='cd ./fardo-sec && ./fardo-sec.sh'" /data/data/com.termux/files/usr/etc/bash.bashrc; then
-    echo "alias fardo-sec='cd ./fardo-sec && ./fardo-sec.sh'" >> /data/data/com.termux/files/usr/etc/bash.bashrc
+if ! grep -q "alias fardo-sec='./fardo-sec/fardo-sec.sh'" /data/data/com.termux/files/usr/etc/bash.bashrc; then
+    echo "alias fardo-sec='./fardo-sec/fardo-sec.sh'" >> /data/data/com.termux/files/usr/etc/bash.bashrc
 fi
 
 echo "Finished"

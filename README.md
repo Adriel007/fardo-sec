@@ -4,11 +4,18 @@
 
 ### Installation Steps:
 
-1. This script requires `git` and `python3` to be installed. If they are not already installed, the script will install them automatically.
+```
+git clone https://github.com/adriel007/fardo-sec
+cd ./fardo-sec
+chmod +x ./fardo-sec.sh
+./fardo-sec.sh
+```
+
+1. This script requires `git` to be installed.
 
 2. Additionally, the script requires the installation of the `figlet` package. This package is also installed automatically if not already present.
 
-3. The script then clones the Sherlock project repository from GitHub and installs its dependencies by running `python3 -m pip install -r requirements.txt`.
+3. The script then clones projects repositories from GitHub and installs its dependencies.
 
 4. Finally, the script creates an alias named `fardo-sec` in the `bash.bashrc` file of Termux. This alias allows easy access to the Fardo-Sec application from the Termux shell.
 
