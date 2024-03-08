@@ -2,7 +2,8 @@
 
 ### Installation Steps:
 
-```git clone https://github.com/adriel007/fardo-sec
+```bash
+git clone https://github.com/adriel007/fardo-sec
 cd ./fardo-sec
 chmod +x ./fardo-sec.sh
 ./fardo-sec.sh
