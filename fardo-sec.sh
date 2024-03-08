@@ -35,17 +35,17 @@ FONT_RESET="\e[0m"
 menu() {
     clear
     
-    options=("Help" "Cameras" "Sherlock" "Holmes" "SSH" "Swarm" "Who" "Create Alias (shortcut)" "Load new Alias (manually)" "Broker")
+    options=("Help" "Cameras" "Sherlock" "Mr.Holmes" "SSH" "Swarm" "Glitch" "Broker" "Create Alias (shortcut)" "Update Alias (manually)")
     commands=(
-        "echo \"You can exec with ${FONT_GREEN}fardo-sec${FONT_RESET}\""
+        "./tools/help.sh"
         "echo 'Você escolheu Cameras.'"
         "echo 'Você escolheu Sherlock.'"
         "echo 'Você escolheu Holmes.'"
         "echo 'Você escolheu SSH.'"
         "echo 'Você escolheu Swarm.'"
-        "echo 'Você escolheu Who.'"
-        "echo 'clear && To create alias, scroll to bottom and write: && echo alias <name>=\"<command>\"' && sleep 3 && nano /data/data/com.termux/files/usr/etc/bash.bashrc"
+        "echo 'Você escolheu Glitch.'"
         "echo 'Broker choice'"
+        "echo 'clear && To create alias, scroll to bottom and write: && echo alias <name>=\"<command>\"' && sleep 3 && nano /data/data/com.termux/files/usr/etc/bash.bashrc"
         "source /data/data/com.termux/files/usr/etc/bash.bashrc && clear && echo Alias updated"
     )
 
