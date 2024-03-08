@@ -1,5 +1,3 @@
----
-
 ## Fardo-Sec Installation and Usage Documentation
 
 ### Installation Steps:
@@ -25,6 +23,7 @@ To use Fardo-Sec, follow these steps:
 1. Open Termux on your Android device.
 
 2. Run the following command to start the Fardo-Sec menu:
+
    ```bash
    fardo-sec
    ```
@@ -36,5 +35,3 @@ To use Fardo-Sec, follow these steps:
 5. After completing an action, press Enter to return to the main menu or follow any additional instructions provided.
 
 6. To exit the Fardo-Sec menu, select the "Exit" option.
-
----
