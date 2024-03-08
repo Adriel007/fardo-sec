@@ -22,7 +22,7 @@ fi
 echo "Finishing..."
 
 if ! grep -q "alias fardo-sec='/data/data/com.termux/files/home/fardo-sec/fardo-sec.sh'" /data/data/com.termux/files/usr/etc/bash.bashrc; then
-    echo "alias fardo-sec=/data/data/com.termux/files/home//fardo-sec/fardo-sec.sh'" >> /data/data/com.termux/files/usr/etc/bash.bashrc
+    echo "alias fardo-sec='/data/data/com.termux/files/home/fardo-sec/fardo-sec.sh'" >> /data/data/com.termux/files/usr/etc/bash.bashrc
 fi
 
 echo "Finished"
