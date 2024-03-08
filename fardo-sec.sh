@@ -37,7 +37,7 @@ menu() {
     
     options=("Help" "Cameras" "Sherlock" "Mr.Holmes" "SSH" "Swarm" "Glitch" "Broker" "Create Alias (shortcut)" "Update Alias (manually)")
     commands=(
-        "./tools/help.sh"
+        "cd ./tools && ./help.sh"
         "echo 'Você escolheu Cameras.'"
         "echo 'Você escolheu Sherlock.'"
         "echo 'Você escolheu Holmes.'"
