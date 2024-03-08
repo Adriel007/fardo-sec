@@ -55,10 +55,10 @@ menu() {
         read -p "Press enter to continue..."
         menu
     elif [[ "$choice" -eq "${#options[@]}" ]]; then
-        echo "Saindo..."
+        cd ..
+        clear
         exit 0
     else
-        echo "Opção inválida."
         menu
     fi
 }
