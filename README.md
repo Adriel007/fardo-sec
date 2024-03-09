@@ -20,18 +20,16 @@ termux-setup-storage
 
 ### Requirements:
 
-- Termux API plugin (Install from the same source where you installed termux)
-- Git package
-- Termux API package
-- FigLet package
-
-Install commands:
-
 ```bash
 pkg install git
 pkg install termux-api
 pkg install -y figlet
 ```
+
+- 'Termux API' plugin (Install from the same source where you installed termux)
+- 'Git' package
+- 'Termux API' package
+- 'FIGlet' package
 
 ### Installation Steps:
 
