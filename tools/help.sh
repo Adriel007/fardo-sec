@@ -1,5 +1,4 @@
 FONT_GREEN="\e[32m"
-FONT_RED="\e[31m"
 FONT_RESET="\e[0m"
 
 clear

@@ -1,3 +1,7 @@
+FONT_GREEN="\e[32m"
+FONT_RED="\e[31m"
+FONT_RESET="\e[0m"
+
 text=$(cat ./fardo-sec/art/glitch.txt)
 
 terminal_width=$(tput cols)
@@ -9,15 +13,14 @@ printf "%*s%s%*s\n" $spaces "" "$text" $spaces ""
 
 read -p "Press any key to start..."
 
-while true; do
-    read -r -s -n 1 key
-    if [[ $key == $'\x0a' ]]; then
-        break
-    else
-        clear
-        sleep 0.5
+for i in {1..4}; do
+    clear
+    if [ $((i % 2)) -eq 1 ]; then
         printf "%*s%s%*s\n" $spaces "" "$text" $spaces ""
-        echo "Press any key to stop..."
-        sleep 0.5
+    else
+        printf "%*s${FONT_RED}%s${FONT_RESET}%*s\n" $spaces "" "$text" $spaces ""
     fi
+    sleep 0.$i
 done
+
+read -p "Press any key to stop..."
