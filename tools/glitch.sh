@@ -13,7 +13,7 @@ printf "%*s%s%*s\n" $spaces "" "$text" $spaces ""
 
 read -p "Press any key to start..."
 
-for i in {1..9}; do
+for i in {9..1}; do
     clear
     if [ $((i % 2)) -eq 1 ]; then
         printf "%*s%s%*s\n" $spaces "" "$text" $spaces ""
