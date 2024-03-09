@@ -3,13 +3,13 @@ echo "Starting..."
 if ! [ -d "sherlock" ]; then
     echo "Installing..."
 
-    git clone https://github.com/sherlock-project/sherlock.git
-    cd sherlock
-    python3 -m pip install -r requirements.txt
-    cd ..
+    #git clone https://github.com/sherlock-project/sherlock.git
+    #cd sherlock
+    #python3 -m pip install -r requirements.txt
+    #cd ..
 
-    echo "Installation finished"
-    cd ..
+    #echo "Installation finished"
+    #cd ..
 fi
 
 echo "Finishing..."
