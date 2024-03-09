@@ -40,6 +40,7 @@ menu() {
         "source /data/data/com.termux/files/usr/etc/bash.bashrc && clear && echo Alias updated"
     )
 
+    echo $(pwd)
     echo -e "${FONT_RED}$(figlet Fardo - Sec)${FONT_RESET}"
     echo "Tools:"
     for i in "${!options[@]}"; do
