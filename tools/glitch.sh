@@ -1,4 +1,4 @@
-text=$(cat ../art/glitch.txt)
+text=$(cat ./fardo-sec/art/glitch.txt)
 
 terminal_width=$(tput cols)
 
