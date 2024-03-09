@@ -1,6 +1,6 @@
 echo "Starting..."
 
-echo pwd
+echo $(pwd)
 
 sleep 10
 if ! [ -d "sherlock" ]; then
