@@ -1,5 +1,19 @@
 ## Fardo-Sec Installation and Usage Documentation
 
+Fardo - Sec is a cybersecurity toolbox that brings together tools created by me and third parties.
+Tools:
+
+- `Cameras`: Shortcut to access traffic cameras.
+- `Sherlock`: Hunt down social media accounts by username across social networks.
+- `Mr.Holmes`: Mr.Holmes is an information gathering tool (OSINT).
+- `SSH`: Connect to SSH servers.
+- `Swarm`: Multi-threaded DoS attack.
+- `Glitch`: Periodic automatic change of IP and MAC.
+- `Broker`: Router admin bruteforce + dictionary attack.
+- `Wlan-F`: Connect to a Wi-Fi network. with bruteforce and dictionary methods.
+- `Create Alias (shortcut)`: Create a custom shortcut in home directory.
+- `Update Alias (manually)`: Update aliases in home directory, sometimes you need to update to use new Alias.
+
 ### Tips for newcomers to Termux
 
 - Install Termux and requested Plugins from [F-Droid](https://f-droid.org/)
