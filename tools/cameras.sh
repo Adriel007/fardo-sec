@@ -10,7 +10,6 @@ read -p "Your choice: " choice
 
 case $choice in
     0)
-        cd ..
         ./fardo-sec.sh
         ;;
     1)

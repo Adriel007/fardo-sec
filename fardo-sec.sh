@@ -1,8 +1,5 @@
 echo "Starting..."
 
-echo $(pwd)
-
-sleep 10
 if ! [ -d "sherlock" ]; then
     echo "Installing..."
 
@@ -12,7 +9,6 @@ if ! [ -d "sherlock" ]; then
     #cd ..
 
     #echo "Installation finished"
-    #cd ..
 fi
 
 echo "Finishing..."
@@ -32,13 +28,13 @@ menu() {
     
     options=("Help" "Cameras" "Sherlock" "Mr.Holmes" "SSH" "Swarm" "Glitch" "Broker" "Wlan-F" "Create Alias (shortcut)" "Update Alias (manually)")
     commands=(
-        "chmod +x ./fardo-sec/tools/help.sh && ./fardo-sec/tools/help.sh"
+        "chmod +x ./tools/help.sh && ./tools/help.sh"
         "echo 'Você escolheu Cameras.'"
         "echo 'Você escolheu Sherlock.'"
         "echo 'Você escolheu Holmes.'"
         "echo 'Você escolheu SSH.'"
         "echo 'Você escolheu Swarm.'"
-        "chmod +x ./fardo-sec/tools/glitch.sh && ./fardo-sec/tools/glitch.sh"
+        "chmod +x ./tools/glitch.sh && ./tools/glitch.sh"
         "echo 'Broker choice'"
         "echo 'Wlan-F'"
         "echo 'clear && To create alias, scroll to bottom and write: && echo alias <name>=\"<command>\"' && sleep 3 && nano /data/data/com.termux/files/usr/etc/bash.bashrc"
