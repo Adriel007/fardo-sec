@@ -4,9 +4,7 @@ if ! [ -d "sherlock" ]; then
     echo "Installing..."
 
     #git clone https://github.com/sherlock-project/sherlock.git
-    #cd sherlock
-    #python3 -m pip install -r requirements.txt
-    #cd ..
+    #python3 -m pip install -r ./sherlock/requirements.txt
 
     #echo "Installation finished"
 fi
@@ -15,6 +13,7 @@ echo "Finishing..."
 
 if ! grep -q "alias fardo-sec='./fardo-sec/fardo-sec.sh'" /data/data/com.termux/files/usr/etc/bash.bashrc; then
     echo "alias fardo-sec='./fardo-sec/fardo-sec.sh'" >> /data/data/com.termux/files/usr/etc/bash.bashrc
+    source /data/data/com.termux/files/usr/etc/bash.bashrc
 fi
 
 echo "Finished"
@@ -56,7 +55,6 @@ menu() {
         read -p "Press enter to continue..."
         menu
     elif [[ "$choice" -eq 0 ]]; then
-        cd ..
         clear
         exit 0
     else
