@@ -1,5 +1,27 @@
 ## Fardo-Sec Installation and Usage Documentation
 
+### Tips for newcomers to Termux
+
+- Install from Termux [F-Droid](https://f-droid.org/)
+
+- Grant app permission to geolocation, notifications and files
+
+```bash
+apt upgrade -y
+apt update -y
+
+pkg update -y
+pkg upgrade -y
+
+termux-setup-storage
+
+pkg install git
+```
+
+### Requeriments:
+
+- Plugin: Termux Api (Install from the same source where you installed termux)
+
 ### Installation Steps:
 
 ```bash
@@ -9,7 +31,7 @@ chmod +x ./fardo-sec.sh
 ./fardo-sec.sh
 ```
 
-1. This script requires `git` to be installed.
+1. This script requires the pkg `git` to be installed.
 
 2. Additionally, the script requires the installation of the `figlet` package. This package is also installed automatically if not already present.
 

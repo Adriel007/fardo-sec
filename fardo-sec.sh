@@ -1,6 +1,6 @@
-if [ -d "sherlock" ]; then
-    echo "Starting..."
-else
+echo "Starting..."
+
+if ! [ -d "sherlock" ]; then
     echo "Installing..."
 
     apt update -y
@@ -10,6 +10,7 @@ else
 
     apt install -y git python3
     pkg install -y figlet
+    pkg install termux-api
 
     git clone https://github.com/sherlock-project/sherlock.git
     cd sherlock
@@ -35,9 +36,9 @@ FONT_RESET="\e[0m"
 menu() {
     clear
     
-    options=("Help" "Cameras" "Sherlock" "Mr.Holmes" "SSH" "Swarm" "Glitch" "Broker" "Create Alias (shortcut)" "Update Alias (manually)")
+    options=("Help" "Cameras" "Sherlock" "Mr.Holmes" "SSH" "Swarm" "Glitch" "Broker" "Wlan-F" "Create Alias (shortcut)" "Update Alias (manually)")
     commands=(
-        "cd ./tools && ./help.sh"
+        "./tools/help.sh"
         "echo 'Você escolheu Cameras.'"
         "echo 'Você escolheu Sherlock.'"
         "echo 'Você escolheu Holmes.'"
@@ -45,6 +46,7 @@ menu() {
         "echo 'Você escolheu Swarm.'"
         "echo 'Você escolheu Glitch.'"
         "echo 'Broker choice'"
+        "echo 'Wlan-F'"
         "echo 'clear && To create alias, scroll to bottom and write: && echo alias <name>=\"<command>\"' && sleep 3 && nano /data/data/com.termux/files/usr/etc/bash.bashrc"
         "source /data/data/com.termux/files/usr/etc/bash.bashrc && clear && echo Alias updated"
     )
