@@ -29,13 +29,13 @@ menu() {
     
     options=("Help" "Cameras" "Sherlock" "Mr.Holmes" "SSH" "Swarm" "Glitch" "Broker" "Wlan-F" "Create Alias (shortcut)" "Update Alias (manually)")
     commands=(
-        "./fardo-sec/tools/help.sh"
+        "chmod +x ./fardo-sec/tools/help.sh && ./fardo-sec/tools/help.sh"
         "echo 'Você escolheu Cameras.'"
         "echo 'Você escolheu Sherlock.'"
         "echo 'Você escolheu Holmes.'"
         "echo 'Você escolheu SSH.'"
         "echo 'Você escolheu Swarm.'"
-        "./fardo-sec/tools/glitch.sh"
+        "chmod +x ./fardo-sec/tools/glitch.sh && ./fardo-sec/tools/glitch.sh"
         "echo 'Broker choice'"
         "echo 'Wlan-F'"
         "echo 'clear && To create alias, scroll to bottom and write: && echo alias <name>=\"<command>\"' && sleep 3 && nano /data/data/com.termux/files/usr/etc/bash.bashrc"
