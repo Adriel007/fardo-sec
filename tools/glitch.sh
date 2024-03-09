@@ -2,7 +2,7 @@ FONT_GREEN="\e[32m"
 FONT_RED="\e[31m"
 FONT_RESET="\e[0m"
 
-text=$(./fardo-sec/art/glitch.txt)
+text=$(cat ./fardo-sec/art/glitch.txt)
 
 terminal_width=$(tput cols)
 
@@ -13,7 +13,7 @@ printf "%*s%s%*s\n" $spaces "" "$text" $spaces ""
 
 read -p "Press any key to start..."
 
-for i in {1..4}; do
+for i in {1..9}; do
     clear
     if [ $((i % 2)) -eq 1 ]; then
         printf "%*s%s%*s\n" $spaces "" "$text" $spaces ""
