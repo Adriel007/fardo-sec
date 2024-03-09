@@ -50,6 +50,7 @@ menu() {
 
     echo -e "${FONT_GREEN}0${FONT_RESET}) Exit"
 
+    echo "$(pwd)"
     read -p "Your choice: " choice
 
     if [[ "$choice" -ge 1 && "$choice" -lt "${#options[@]}" ]]; then
