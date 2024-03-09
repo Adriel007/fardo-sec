@@ -26,10 +26,10 @@ pkg install termux-api
 pkg install -y figlet
 ```
 
-- 'Termux API' plugin (Install from the same source where you installed termux)
-- 'Git' package
-- 'Termux API' package
-- 'FIGlet' package
+- `Termux API` plugin (Install from the same source where you installed termux)
+- `Git` package
+- `Termux API` package
+- `FIGlet` package
 
 ### Installation Steps:
 
