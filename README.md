@@ -1,6 +1,6 @@
 ## Fardo-Sec Installation and Usage Documentation
 
-`Fardo - Sec` is a cybersecurity toolbox that brings together tools created by me and third parties.
+`Fardo - Sec` is a cybersecurity toolbox that brings together tools created by me and third parties.\n
 Tools:
 
 - `Cameras`: Shortcut to access traffic cameras.
