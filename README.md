@@ -2,9 +2,11 @@
 
 ### Tips for newcomers to Termux
 
-- Install from Termux [F-Droid](https://f-droid.org/)
+- Install Termux and requested Plugins from [F-Droid](https://f-droid.org/)
 
 - Grant app permission to geolocation, notifications and files
+
+- Update your Termux with these commands:
 
 ```bash
 apt upgrade -y
@@ -14,17 +16,16 @@ pkg update -y
 pkg upgrade -y
 
 termux-setup-storage
-
-pkg install git
 ```
 
-### Requeriments:
+### Requirements:
 
 - Plugin: Termux Api (Install from the same source where you installed termux)
 
 ### Installation Steps:
 
 ```bash
+pkg install git
 git clone https://github.com/adriel007/fardo-sec
 cd ./fardo-sec
 chmod +x ./fardo-sec.sh
