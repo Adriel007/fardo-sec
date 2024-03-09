@@ -3,14 +3,7 @@ echo "Starting..."
 if ! [ -d "sherlock" ]; then
     echo "Installing..."
 
-    apt update -y
-    apt upgrade -y
-    pkg update -y
-    pkg upgrade -y
-
     apt install -y git python3
-    pkg install -y figlet
-    pkg install termux-api
 
     git clone https://github.com/sherlock-project/sherlock.git
     cd sherlock

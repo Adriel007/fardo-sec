@@ -21,11 +21,20 @@ termux-setup-storage
 ### Requirements:
 
 - Plugin: Termux Api (Install from the same source where you installed termux)
+- Git package
+- Termux API package
+- FigLet package
+- Install commands:
+
+```bash
+pkg install git
+pkg install termux-api
+pkg install -y figlet
+```
 
 ### Installation Steps:
 
 ```bash
-pkg install git
 git clone https://github.com/adriel007/fardo-sec
 cd ./fardo-sec
 chmod +x ./fardo-sec.sh
