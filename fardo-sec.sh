@@ -3,8 +3,6 @@ echo "Starting..."
 if ! [ -d "sherlock" ]; then
     echo "Installing..."
 
-    apt install -y git python3
-
     git clone https://github.com/sherlock-project/sherlock.git
     cd sherlock
     python3 -m pip install -r requirements.txt

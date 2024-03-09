@@ -24,12 +24,17 @@ termux-setup-storage
 pkg install git
 pkg install termux-api
 pkg install -y figlet
+
+apt install -y git python3
 ```
 
 - `Termux API` plugin (Install from the same source where you installed termux)
+
 - `Git` package
 - `Termux API` package
 - `FIGlet` package
+
+- `Python 3` Advanced Package Tool
 
 ### Installation Steps:
 
