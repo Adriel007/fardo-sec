@@ -36,9 +36,10 @@ termux-setup-storage
 ### Requirements:
 
 ```bash
-pkg install git
-pkg install termux-api
-pkg install -y figlet
+pkg install git -y
+pkg install termux-api -y
+pkg install figlet -y
+pkg install ncurses-utils -y
 
 apt install -y git python3
 ```
@@ -48,6 +49,7 @@ apt install -y git python3
 - `Git` Package
 - `Termux API` Package
 - `FIGlet` Package
+- `ncurses` Package
 
 - `Python 3` Advanced Package Tool
 
@@ -87,3 +89,8 @@ To use Fardo-Sec, follow these steps:
 5. After completing an action, press Enter to return to the main menu or follow any additional instructions provided.
 
 6. To exit the Fardo-Sec menu, select the "Exit" option.
+
+### Credits:
+
+- [Mr.Holmes](https://github.com/Lucksi/Mr.Holmes)
+- [Sherlock](https://github.com/sherlock-project/sherlock)

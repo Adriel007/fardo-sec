@@ -35,7 +35,7 @@ menu() {
         "echo 'Você escolheu Holmes.'"
         "echo 'Você escolheu SSH.'"
         "echo 'Você escolheu Swarm.'"
-        "echo 'Você escolheu Glitch.'"
+        "./tools/glitch.sh"
         "echo 'Broker choice'"
         "echo 'Wlan-F'"
         "echo 'clear && To create alias, scroll to bottom and write: && echo alias <name>=\"<command>\"' && sleep 3 && nano /data/data/com.termux/files/usr/etc/bash.bashrc"
