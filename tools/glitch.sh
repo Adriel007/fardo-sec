@@ -2,7 +2,7 @@ FONT_GREEN="\e[32m"
 FONT_RED="\e[31m"
 FONT_RESET="\e[0m"
 
-text=$(cat ./fardo-sec/art/glitch.txt)
+text=$(./fardo-sec/art/glitch.txt)
 
 terminal_width=$(tput cols)
 
