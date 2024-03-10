@@ -20,9 +20,16 @@ done
 
 echo CTRL+C to exit
 
+# Função para obter o endereço IP da interface de rede padrão
+get_ip_address() {
+    local interface=$(netstat -rn | grep -E '^(default|0\.0\.0\.0)' | awk '{print $NF}')
+    ifconfig "$interface" | awk '/inet /{print $2}'
+}
+
 # Função para gerar um IP aleatório com base no prefixo da rede
 generate_random_ip() {
-    local prefix=$(ip route | awk '/default/{print $3}' | cut -d'.' -f1)
+    local ip=$(get_ip_address)
+    local prefix=$(echo "$ip" | cut -d'.' -f1)
     case "$prefix" in
         10) echo "10.$((RANDOM % 256)).$((RANDOM % 256)).$((RANDOM % 254 + 1))" ;;
         172) echo "172.$((RANDOM % 16 + 16)).$((RANDOM % 256)).$((RANDOM % 254 + 1))" ;;
@@ -31,14 +38,10 @@ generate_random_ip() {
     esac
 }
 
-# Obter a interface de rede padrão
-interface=$(ip route | awk '/default/{print $5}')
-
 # Loop infinito para alterar o IP
 while true; do
     new_ip=$(generate_random_ip)
     echo "Configurando novo IP: $new_ip"
-    ip addr flush dev "$interface"
-    ip addr add "$new_ip"/24 dev "$interface"
+    ifconfig wlan0 "$new_ip" netmask 255.255.255.0
     sleep 60  # Altera o IP a cada 60 segundos
 done
