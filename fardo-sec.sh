@@ -19,7 +19,8 @@ fi
 
 echo "Creating Widgets..."
 
-echo "$HOME/fardo-sec/tools/glitch.sh" > echo $(pwd) && echo $($HOME) && $HOME/.shortcuts/glitch.sh
+test='echo $(pwd) && echo $($HOME) && "$HOME/fardo-sec/tools/glitch.sh"'
+echo $test > $HOME/.shortcuts/glitch.sh
 chmod +x $HOME/.shortcuts/glitch.sh
 
 
