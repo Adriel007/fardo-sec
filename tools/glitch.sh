@@ -20,13 +20,14 @@ done
 
 echo CTRL+C to exit
 
+
 # Obtém a interface de rede padrão
 interface=$(ip route | grep default | awk '{print $5}')
 
-# Obtém o endereço IP e a máscara de sub-rede atual
-ip_info=$(ip addr show dev $interface | grep "inet " | awk '{print $2}')
-ip=$(echo $ip_info | cut -d'/' -f1)
-subnet_mask=$(echo $ip_info | cut -d'/' -f2)
+# Obtém o endereço IP e a máscara de sub-rede atual usando ifconfig
+ip_info=$(ifconfig $interface | grep "inet " | awk '{print $2}')
+ip=$(echo $ip_info | cut -d' ' -f2)
+subnet_mask=$(echo $ip_info | cut -d' ' -f4)
 
 # Determina o prefixo da rede
 case $subnet_mask in
