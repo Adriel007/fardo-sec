@@ -39,7 +39,7 @@ termux-setup-storage
 pkg install git -y
 pkg install termux-api -y
 pkg install figlet -y
-pkg install net-tools -y
+pkg install wireless-tools -y
 
 apt install -y git python3
 ```
@@ -50,7 +50,7 @@ apt install -y git python3
 - `Git` Package
 - `Termux API` Package
 - `FIGlet` Package
-- `Net Tools` Package
+- `Wireless Tools` Package
 
 - `Python 3` Advanced Package Tool
 
