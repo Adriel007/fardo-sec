@@ -6,7 +6,7 @@ art=$(<$HOME/fardo-sec/art/interrogation.txt)
 echo "$art"
 read -p "Press ENTER to start GLITCH"
 
-for i in {9..1}; do
+for i in {5..1}; do
     for ((j=0; j<4; j++)); do
         clear
         if [ $((j % 2)) -eq 0 ]; then
