@@ -56,5 +56,5 @@ while true; do
     new_ip=$(generate_random_ip "$prefix")
     echo "Configurando novo IP: $new_ip"
     ifconfig "$interface" "$new_ip" netmask 255.255.255.0
-    sleep 60  # Altera o IP a cada 60 segundos
+    sleep 10  # Altera o IP a cada 10 segundos
 done
