@@ -45,6 +45,7 @@ apt install -y git python3
 ```
 
 - `Termux API` Plugin (Install from the same source where you installed termux)
+- `Termux Widgets` Plugin (Install from the same source where you installed termux)
 
 - `Git` Package
 - `Termux API` Package

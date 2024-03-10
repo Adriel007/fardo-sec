@@ -19,6 +19,7 @@ fi
 echo "Creating Widgets"
 
 echo "./fardo-sec/tools/glitch.sh" > $HOME/.shortcuts/fardo-sec-glitch.sh
+chmod +x $HOME/.shortcuts/fardo-sec-glitch.sh
 
 echo "Finished"
 
