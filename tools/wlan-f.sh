@@ -25,7 +25,7 @@ termux-wifi-enable true
 wifi_info=$(termux-wifi-scaninfo)
 
 # Extrair o menor RSSI e o SSID correspondente
-min_rssi=9999
+min_rssi=-100
 min_ssid=""
 for row in $(echo "${wifi_info}" | jq -c '.[]'); do
     ssid=$(echo "${row}" | jq -r '.ssid')
