@@ -40,6 +40,4 @@ done
 
 # Imprimir o resultado mínimo do RSSI e o SSID correspondente
 echo "Minimum RSSI: $min_rssi"
-echo "Corresponding SSID: $min_ssid"
-
-
+echo "Corresponding SSID: $min_ssid"x
