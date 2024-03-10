@@ -5,21 +5,38 @@ FONT_RESET="\e[0m"
 art=$(<$HOME/fardo-sec/art/interrogation.txt)
 
 width=$(tput cols)
-offset=$(( (width - ${#art}) / 2))
-padding=$(printf "%-${offset}s")
+IFS=$'\n' read -d '' -r -a lines <<< "$art"
 
-echo -e "${padding}${art}"
+for line in "${lines[@]}"; do
+    line_length=${#line}
+    offset=$(( (width - line_length) / 2))
+    padding=$(printf "%-${offset}s")
+    centered_lines+=("${padding}${line}")
+done
+
+printf "%s\n" "${centered_lines[@]}"
+
 read -p "Press ENTER to start GLITCH"
 
-for i in {3..1}; do
+for i in {5..1}; do
     for ((j=0; j<4; j++)); do
         clear
+        width=$(tput cols)
 
-        if [ $((j % 2)) -eq 0 ]; then
-            echo -e "${padding}${FONT_RESET}$art"
-        else
-            echo -e "${padding}${FONT_GREEN}$art${FONT_RESET}"
-        fi
+        centered_lines=()
+        for line in "${lines[@]}"; do
+            line_length=${#line}
+            offset=$(( (width - line_length) / 2))
+            padding=$(printf "%-${offset}s")
+
+            if [ $((j % 2)) -eq 0 ]; then
+                centered_lines+=("${padding}${FONT_RESET}${line}")
+            else
+                centered_lines+=("${padding}${FONT_GREEN}${line}${FONT_RESET}")
+            fi
+        done
+
+        printf "%s\n" "${centered_lines[@]}"
         sleep 0.$i
     done
 done
