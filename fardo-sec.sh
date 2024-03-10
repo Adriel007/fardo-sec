@@ -36,9 +36,8 @@ menu() {
         "chmod +x ./tools/glitch.sh && ./tools/glitch.sh"
         "echo 'Broker choice'"
         "echo 'Wlan-F'"
-        "echo 'clear && To create alias, scroll to bottom and write: && echo alias <name>=\"<command>\"' && echo -e \"echo -e "\n${FONT_GREEN}BE CAREFUL, DO NOT DELETE OTHERS LINES${FONT_RESET}\" && read -p "Press ENTER to continue..." && nano /data/data/com.termux/files/usr/etc/bash.bashrc"
+        "chmod +x ./tools/create_alias.sh && ./tools/create_alias.sh"
         "source /data/data/com.termux/files/usr/etc/bash.bashrc && clear && echo Alias updated"
-    )
 
     echo $(pwd)
     echo -e "${FONT_RED}$(figlet Fardo - Sec)${FONT_RESET}"
