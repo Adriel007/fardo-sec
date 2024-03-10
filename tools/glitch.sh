@@ -1,1 +1,2 @@
-echo $(cat ./art/interrogation.txt)
+art=$(<./art/interrogation.txt)
+echo "$art"
