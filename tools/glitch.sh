@@ -20,28 +20,50 @@ done
 
 echo CTRL+C to exit
 
-# Função para obter o endereço IP da interface de rede padrão
-get_ip_address() {
-    local interface=$(netstat -rn | grep -E '^(default|0\.0\.0\.0)' | awk '{print $NF}')
-    ifconfig "$interface" | awk '/inet /{print $2}'
-}
+# Obtém a interface de rede padrão
+interface=$(ip route | grep default | awk '{print $5}')
 
-# Função para gerar um IP aleatório com base no prefixo da rede
-generate_random_ip() {
-    local ip=$(get_ip_address)
-    local prefix=$(echo "$ip" | cut -d'.' -f1)
-    case "$prefix" in
-        10) echo "10.$((RANDOM % 256)).$((RANDOM % 256)).$((RANDOM % 254 + 1))" ;;
-        172) echo "172.$((RANDOM % 16 + 16)).$((RANDOM % 256)).$((RANDOM % 254 + 1))" ;;
-        192) echo "192.168.$((RANDOM % 256)).$((RANDOM % 254 + 1))" ;;
-        *) echo "Prefixo de rede não suportado" ;;
-    esac
-}
+# Obtém o endereço IP e a máscara de sub-rede atual
+ip_info=$(ip addr show dev $interface | grep "inet " | awk '{print $2}')
+ip=$(echo $ip_info | cut -d'/' -f1)
+subnet_mask=$(echo $ip_info | cut -d'/' -f2)
 
-# Loop infinito para alterar o IP
-while true; do
-    new_ip=$(generate_random_ip)
-    echo "Configurando novo IP: $new_ip"
-    ifconfig wlan0 "$new_ip" netmask 255.255.255.0
-    sleep 60  # Altera o IP a cada 60 segundos
-done
+# Determina o prefixo da rede
+case $subnet_mask in
+    255.0.0.0)
+        prefix="8"
+        ;;
+    255.255.0.0)
+        prefix="16"
+        ;;
+    255.255.255.0)
+        prefix="24"
+        ;;
+    *)
+        echo "Subnet mask não suportada."
+        exit 1
+        ;;
+esac
+
+# Gera um IP aleatório na mesma rede
+random_ip=$(awk -v ip="$ip" -v prefix="$prefix" '
+    BEGIN {
+        split(ip, octets, ".");
+        srand();
+        for (i = 1; i <= 4; i++) {
+            if (i <= prefix / 8) {
+                new_ip = new_ip octets[i] ".";
+            } else if (i == int(prefix / 8) + 1) {
+                new_ip = new_ip int(rand() * 256) ".";
+            } else {
+                new_ip = new_ip int(rand() * 256);
+            }
+        }
+        print new_ip;
+    }
+')
+
+# Define o novo IP
+ip addr add $random_ip/$subnet_mask dev $interface
+
+echo "Novo IP configurado: $random_ip/$subnet_mask"
