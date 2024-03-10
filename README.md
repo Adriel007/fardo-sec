@@ -42,6 +42,7 @@ pkg install figlet -y
 pkg install wireless-tools -y
 pkg install iproute2 -y
 pkg install jq -y
+pkg install wpa-supplicant -y
 
 apt install -y git python3
 ```
@@ -54,6 +55,7 @@ apt install -y git python3
 - `FIGlet` Package
 - `Wireless Tools` Package
 - `Command-line JSON processor` Package
+- `WPA Supplicant` Package
 
 - `Python 3` Advanced Package Tool
 

