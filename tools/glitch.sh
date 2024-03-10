@@ -1,1 +1,1 @@
-echo $(cat ./art/inerrogation.txt)
+echo $(cat ./art/interrogation.txt)
