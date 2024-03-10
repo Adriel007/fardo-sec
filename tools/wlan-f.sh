@@ -10,7 +10,7 @@ read -p "Press ENTER to continue..."
 for i in {3..1}; do
     for ((j=0; j<4; j++)); do
         clear
-        if [ $((i % 2)) -eq 0 ]; then
+        if [ $((j % 2)) -eq 0 ]; then
             echo -e "${FONT_GREEN}$art${FONT_RESET}"
         else
             echo -e "${FONT_RESET}$art"
@@ -21,4 +21,4 @@ done
 
 termux-wifi-enable true
 
-termux-wifi-connectioninfo
+termux-wifi-scaninfo
