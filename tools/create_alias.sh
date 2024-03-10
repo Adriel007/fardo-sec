@@ -1,3 +1,6 @@
+FONT_RED="\e[31m"
+FONT_RESET="\e[0m"
+
 clear 
 echo "To create an alias, scroll to the bottom and write:"
 echo "alias <name>=\"<command>\""

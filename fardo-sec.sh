@@ -46,9 +46,9 @@ menu() {
         echo -e "${FONT_GREEN}$((i+1))${FONT_RESET}) ${options[$i]}"
     done
 
-    echo -e "\n${FONT_GREEN}0${FONT_RESET}) Exit"
+    echo -e "\n${FONT_GREEN}0${FONT_RESET}) Exit\n\n"
 
-    read -p "\n\nYour choice: " choice
+    read -p "Your choice: " choice
 
     if [[ "$choice" -ge 1 && "$choice" -lt "${#options[@]}" ]]; then
         eval "${commands[$choice-1]}"
