@@ -1,3 +1,4 @@
+#!/bin/bash
 SSID="Nome_da_rede_Wi-Fi"
 PASSWORD="Senha_da_rede_Wi-Fi"
 

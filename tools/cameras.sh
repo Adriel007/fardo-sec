@@ -1,3 +1,4 @@
+#!/bin/bash
 clear
 
 echo "Choose an camera by index:"

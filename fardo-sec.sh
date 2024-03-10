@@ -1,3 +1,4 @@
+#!/bin/bash
 echo "Starting..."
 
 if ! [ -d "sherlock" ]; then
