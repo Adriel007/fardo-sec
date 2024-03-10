@@ -19,10 +19,7 @@ fi
 
 echo "Creating Widgets..."
 
-echo $(pwd)
-echo $($HOME)
-read -p "Press ENTER to continue..."
-echo "$HOME/fardo-sec/tools/glitch.sh" > $HOME/.shortcuts/glitch.sh
+echo "$HOME/fardo-sec/tools/glitch.sh" > echo $(pwd) && echo $($HOME) && $HOME/.shortcuts/glitch.sh
 chmod +x $HOME/.shortcuts/glitch.sh
 
 
