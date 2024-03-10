@@ -16,6 +16,10 @@ if ! grep -q "alias fardo-sec='./fardo-sec/fardo-sec.sh'" /data/data/com.termux/
     source /data/data/com.termux/files/usr/etc/bash.bashrc
 fi
 
+echo "Creating Widgets"
+
+echo "./fardo-sec/tools/glitch.sh" > $HOME/.shortcuts/fardo-sec-glitch.sh
+
 echo "Finished"
 
 FONT_GREEN="\e[32m"
