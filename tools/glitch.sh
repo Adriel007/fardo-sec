@@ -22,7 +22,7 @@ echo CTRL+C to exit
 
 # Função para obter o prefixo da rede
 get_network_prefix() {
-    local ip=$(ip route | grep default | awk '{print $3}')
+    local ip=$(ifconfig | grep 'inet ' | grep -v '127.0.0.1' | awk '{print $2}')
     local mask=$(ifconfig | grep -A 1 "$ip" | tail -n 1 | awk '{print $4}')
     local prefix=$(echo "$mask" | tr '.' ' ' | awk '{print $1}')
     echo "$prefix"
@@ -48,14 +48,13 @@ generate_random_ip() {
 }
 
 # Obter a interface de rede padrão
-interface=$(ip route | grep default | awk '{print $5}')
+interface=$(ifconfig | grep 'flags' | head -n 1 | awk '{print $1}')
 
 # Loop infinito para alterar o IP
 while true; do
     prefix=$(get_network_prefix)
     new_ip=$(generate_random_ip "$prefix")
     echo "Configurando novo IP: $new_ip"
-    ip addr flush dev "$interface"
-    ip addr add "$new_ip"/24 dev "$interface"
+    ifconfig "$interface" "$new_ip" netmask 255.255.255.0
     sleep 60  # Altera o IP a cada 60 segundos
 done
