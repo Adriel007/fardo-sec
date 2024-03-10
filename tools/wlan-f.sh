@@ -21,31 +21,25 @@ for i in {3..1}; do
 done
 
 termux-wifi-enable true
-
+# Executar a varredura Wi-Fi e armazenar a saída em wifi_info
 wifi_info=$(termux-wifi-scaninfo)
 
-min_diff=999999  # Um número grande
+# Inicializar os valores mínimos do RSSI e SSID
+min_rssi=-100
 min_ssid=""
-min_rssi=""
 
-# Iterar sobre cada linha na saída
-while IFS= read -r line; do
-    # Verificar se a linha contém o campo "ssid"
-    if [[ $line == *"ssid"* ]]; then
-        ssid=$(echo "$line" | awk -F'"' '{print $4}')  # Extrair o SSID
-        rssi=$(echo "$line" | awk -F'"' '{print $8}')  # Extrair o RSSI
-
-        # Calcular a diferença entre o RSSI e zero (valor absoluto)
-        diff=${rssi#-}  # Remove o sinal negativo
-        # Verificar se essa diferença é menor que a menor diferença encontrada até agora
-        if ((diff < min_diff)); then
-            min_diff=$diff
-            min_ssid=$ssid
-            min_rssi=$rssi
-        fi
+# Iterar sobre cada objeto no resultado da varredura Wi-Fi
+echo "$wifi_info" | jq -c '.[]' | while IFS= read -r obj; do
+    ssid=$(echo "$obj" | jq -r '.ssid')
+    rssi=$(echo "$obj" | jq -r '.rssi')
+    if (( rssi >= min_rssi )); then
+        min_rssi=$rssi
+        min_ssid=$ssid
     fi
-done <<< "$wifi_info"
+done
 
-echo "SSID com valor de RSSI mais próximo de zero:"
-echo "SSID: $min_ssid"
-echo "RSSI: $min_rssi"
+# Imprimir o resultado mínimo do RSSI e o SSID correspondente
+echo "Minimum RSSI: $min_rssi"
+echo "Corresponding SSID: $min_ssid"
+
+

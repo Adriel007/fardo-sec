@@ -41,6 +41,7 @@ pkg install termux-api -y
 pkg install figlet -y
 pkg install wireless-tools -y
 pkg install iproute2 -y
+pkg install jq -y
 
 apt install -y git python3
 ```
@@ -52,6 +53,7 @@ apt install -y git python3
 - `Termux API` Package
 - `FIGlet` Package
 - `Wireless Tools` Package
+- `Command-line JSON processor` Package
 
 - `Python 3` Advanced Package Tool
 
