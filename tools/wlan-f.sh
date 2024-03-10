@@ -27,18 +27,14 @@ wifi_info=$(termux-wifi-scaninfo)
 strongest_signal=""
 max_rssi=-100
 
-# Loop sobre as informações das redes Wi-Fi
-while IFS= read -r line; do
-    if [[ $line =~ ^SSID:\ ([^\"]+) ]]; then
-        ssid="${BASH_REMATCH[1]}"
-    elif [[ $line =~ ^RSSI:\ ([^\"]+) ]]; then
-        rssi="${BASH_REMATCH[1]}"
-        if (( rssi > max_rssi )); then
-            max_rssi=$rssi
-            strongest_signal="$ssid"
-        fi
+# Extrai SSID e RSSI de cada rede Wi-Fi na saída do comando
+while read -r ssid; do
+    read -r rssi
+    if (( rssi > max_rssi )); then
+        max_rssi=$rssi
+        strongest_signal="$ssid"
     fi
-done <<< "$wifi_info"
+done < <(echo "$wifi_info" | jq -r '.[].ssid, .[].rssi')
 
 # Exibe o nome da rede com o sinal mais forte
 echo "Rede Wi-Fi mais próxima: $strongest_signal com RSSI $max_rssi"
