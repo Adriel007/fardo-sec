@@ -24,20 +24,18 @@ termux-wifi-enable true
 # Executar a varredura Wi-Fi e armazenar a saída em wifi_info
 wifi_info=$(termux-wifi-scaninfo)
 
-# Inicializar os valores mínimos do RSSI e SSID
-min_rssi=-100
+# Extrair o menor RSSI e o SSID correspondente
+min_rssi=9999
 min_ssid=""
-
-# Iterar sobre cada objeto no resultado da varredura Wi-Fi
-echo "$wifi_info" | jq -c '.[]' | while IFS= read -r obj; do
-    ssid=$(echo "$obj" | jq -r '.ssid')
-    rssi=$(echo "$obj" | jq -r '.rssi')
-    if (( rssi >= min_rssi )); then
-        min_rssi=$rssi
-        min_ssid=$ssid
+for row in $(echo "${wifi_info}" | jq -c '.[]'); do
+    ssid=$(echo "${row}" | jq -r '.ssid')
+    rssi=$(echo "${row}" | jq -r '.rssi')
+    if [ "${rssi}" -lt "${min_rssi}" ]; then
+        min_rssi="${rssi}"
+        min_ssid="${ssid}"
     fi
 done
 
-# Imprimir o resultado mínimo do RSSI e o SSID correspondente
-echo "Minimum RSSI: $min_rssi"
-echo "Corresponding SSID: $min_ssid"x
+# Exibir o menor RSSI e o SSID correspondente na tela
+echo "Menor RSSI: ${min_rssi}"
+echo "SSID correspondente: ${min_ssid}"
