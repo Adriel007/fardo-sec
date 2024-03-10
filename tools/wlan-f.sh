@@ -27,19 +27,20 @@ termux-wifi-enable true
 
 wifi_info=$(termux-wifi-scaninfo)
 
-# Obtém o SSID e o RSSI de cada rede Wi-Fi
-while read -r line; do
-    if [[ $line =~ "ssid" ]]; then
-        ssid=$(echo "$line" | awk -F'"' '{print $4}')
-    elif [[ $line =~ "rssi" ]]; then
-        rssi=$(echo "$line" | awk -F'[- ]' '{print $2}')
-        # Verifica se o RSSI é o mais forte até agora
-        if (( rssi > max_rssi )); then
-            max_rssi=$rssi
-            strongest_ssid=$ssid
-        fi
+min_rssi=-100
+min_ssid=""
+
+# Iterar sobre cada entrada no JSON
+while IFS= read -r line; do
+    ssid=$(echo "$line" | grep -oP '(?<="ssid": ")[^"]+')
+    rssi=$(echo "$line" | grep -oP '(?<="rssi": )[^,]+')
+
+    # Atualizar o SSID com o menor valor de RSSI encontrado até agora
+    if (( rssi < min_rssi )); then
+        min_rssi=$rssi
+        min_ssid=$ssid
     fi
 done <<< "$wifi_info"
 
-# Exibe o Wi-Fi mais próximo
-echo "Wi-Fi mais próximo: $strongest_ssid com RSSI $max_rssi"
+# Imprimir o SSID com o menor valor de RSSI
+echo "SSID com menor RSSI: $min_ssid"
