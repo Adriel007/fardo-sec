@@ -55,7 +55,7 @@ generate_combinations() {
 
 echo "Connecting to $min_ssid..."
 
-while IFS= read -r senha; do
+while IFS= read -r passwd; do
     cat > /data/misc/wifi/wpa_supplicant.conf <<EOF
     ctrl_interface=/data/misc/wifi/wpa_supplicant
     ctrl_interface_group=1010
@@ -64,7 +64,7 @@ while IFS= read -r senha; do
 
     network={
         ssid="$min_ssid"
-        psk="$senha"
+        psk="$passwd"
         key_mgmt=WPA-PSK
     }
 EOF
