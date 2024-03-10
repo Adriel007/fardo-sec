@@ -5,6 +5,7 @@ FONT_RESET="\e[0m"
 art=$(<$HOME/fardo-sec/art/interrogation.txt)
 
 width=$(tput cols)
+
 IFS=$'\n' read -d '' -r -a lines <<< "$art"
 
 for line in "${lines[@]}"; do
@@ -16,7 +17,7 @@ done
 
 printf "%s\n" "${centered_lines[@]}"
 
-read -p "Press ENTER to start GLITCH"
+read -rsn1 -p "Press ENTER to start GLITCH" key
 
 for i in {5..1}; do
     for ((j=0; j<4; j++)); do
@@ -41,4 +42,4 @@ for i in {5..1}; do
     done
 done
 
-read -p "Press ENTER to continue..."
+read -rsn1 -p "Press ENTER to continue..." key
