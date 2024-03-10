@@ -11,7 +11,7 @@ padding=$(printf "%-${offset}s")
 echo -e "${padding}${art}"
 read -p "Press ENTER to start GLITCH"
 
-for i in {5..1}; do
+for i in {3..1}; do
     for ((j=0; j<4; j++)); do
         clear
 
