@@ -27,6 +27,10 @@ termux-wifi-enable true
 
 wifi_info=$(termux-wifi-scaninfo)
 
+echo "Saída do termux-wifi-scaninfo:"
+echo "$wifi_info"
+
+
 min_rssi=-100
 min_ssid=""
 
