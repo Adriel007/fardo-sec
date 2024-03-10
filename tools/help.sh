@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/data/data/com.termux/files/usr/bin/bash
 FONT_GREEN="\e[32m"
 FONT_RESET="\e[0m"
 

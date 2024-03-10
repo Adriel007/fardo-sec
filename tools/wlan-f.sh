@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/data/data/com.termux/files/usr/bin/bash
 SSID="Nome_da_rede_Wi-Fi"
 PASSWORD="Senha_da_rede_Wi-Fi"
 
