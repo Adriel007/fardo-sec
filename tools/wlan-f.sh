@@ -1,25 +1,22 @@
 #!/data/data/com.termux/files/usr/bin/bash
-SSID="Nome_da_rede_Wi-Fi"
-PASSWORD="Senha_da_rede_Wi-Fi"
+clear
 
-iwlist wlan0 scan
+art=$(<$HOME/fardo-sec/art/wifi.txt)
+echo "$art"
+read -p "Press ENTER to continue..."
 
-wpa_passphrase "$SSID" "$PASSWORD" >> /data/misc/wifi/wpa_supplicant.conf
-
-ifconfig wlan0 up
-
-wpa_supplicant -B -i wlan0 -c /data/misc/wifi/wpa_supplicant.conf
-
-timeout=30
-start_time=$(date +%s)
-while ! ifconfig wlan0 | grep -q "inet "; do
-    current_time=$(date +%s)
-    elapsed_time=$((current_time - start_time))
-    if [ $elapsed_time -ge $timeout ]; then
-        echo "Falha ao conectar à rede Wi-Fi: Tempo limite excedido."
-        exit 1
-    fi
-    sleep 1
+for i in {3..1}; do
+    for ((j=0; j<4; j++)); do
+        clear
+        if [ $((i % 2)) -eq 0 ]; then
+            echo -e "${FONT_GREEN}$art${FONT_RESET}"
+        else
+            echo -e "${FONT_RESET}$art"
+        fi
+        sleep 0.$i
+    done
 done
 
-echo "Conectado à rede Wi-Fi!"6:58 AM
+termux-wifi-enable true
+
+termuxtermux-wifi-connectioninfo

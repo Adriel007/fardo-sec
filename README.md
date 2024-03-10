@@ -40,6 +40,7 @@ pkg install git -y
 pkg install termux-api -y
 pkg install figlet -y
 pkg install wireless-tools -y
+pkg install iproute2 -y
 
 apt install -y git python3
 ```
