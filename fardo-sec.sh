@@ -18,13 +18,6 @@ if ! [ -d "Mr.Holmes" ]; then
     #echo "Installation finished"
 fi
 
-if ! [ -d "ipChange" ]; then
-    git clone https://github.com/lucadivit/ipChange.git
-    pip install -r $HOME/fardo-sec/ipChange/requirements.txt
-
-    echo "Installation finished"
-fi
-
 echo "Finishing..."
 
 if ! grep -q "alias fardo-sec='$HOME/fardo-sec/fardo-sec.sh'" /data/data/com.termux/files/usr/etc/bash.bashrc; then

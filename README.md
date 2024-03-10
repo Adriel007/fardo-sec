@@ -9,7 +9,7 @@ Tools:
 - `Mr.Holmes`: Mr.Holmes is an information gathering tool (OSINT).
 - `SSH`: Connect to SSH servers.
 - `Swarm`: Multi-threaded DoS attack.
-- `Glitch`: Periodic automatic change of IP and MAC.
+- `Glitch`: Periodic automatic change of IP.
 - `Broker`: Router admin bruteforce + dictionary attack.
 - `Wlan-F`: Connect to a Wi-Fi network. with bruteforce and dictionary methods.
 - `Create Alias (shortcut)`: Create a custom shortcut in home directory.
@@ -108,4 +108,3 @@ source /data/data/com.termux/files/usr/etc/bash.bashrc
 
 - [Mr.Holmes](https://github.com/Lucksi/Mr.Holmes)
 - [Sherlock](https://github.com/sherlock-project/sherlock)
-- [ipChange](https://github.com/lucadivit/ipChange)
