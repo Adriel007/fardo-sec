@@ -24,28 +24,25 @@ termux-wifi-enable true
 
 wifi_info=$(termux-wifi-scaninfo)
 
+min_diff=999999  # Um número grande
 min_ssid=""
-min_rssi=100  # Inicializar com um valor grande (positivo)
 
 # Iterar sobre cada linha na saída
-echo ----------------------------------------
 while IFS= read -r line; do
     # Verificar se a linha contém o campo "ssid"
-    if [[ $line == *"ssid"*]] then
+    if [[ $line == *"ssid"* ]]; then
         ssid=$(echo "$line" | awk -F'"' '{print $4}')  # Extrair o SSID
         rssi=$(echo "$line" | awk -F'"' '{print $8}')  # Extrair o RSSI
 
-        # Calcular o valor absoluto do RSSI usando awk
-        rssi_abs=$(awk -v rssi="$rssi" 'BEGIN {print int(rssi < 0 ? -rssi : rssi)}')
-        echo "SSID: $ssid - RSSI: $rssi"
-        # Atualizar o SSID com o valor de RSSI mais próximo de zero encontrado até agora
-        if (( rssi_abs < min_rssi )); then
-            min_rssi=$rssi_abs
+        # Calcular a diferença entre o RSSI e zero (valor absoluto)
+        diff=${rssi#-}  # Remove o sinal negativo
+        # Verificar se essa diferença é menor que a menor diferença encontrada até agora
+        if ((diff < min_diff)); then
+            min_diff=$diff
             min_ssid=$ssid
         fi
     fi
 done <<< "$wifi_info"
-echo ---------------------------------------
 
 
 echo "SSID com menor RSSI: $min_ssid"
