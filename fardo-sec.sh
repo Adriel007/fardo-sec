@@ -16,10 +16,16 @@ if ! grep -q "alias fardo-sec='$HOME/fardo-sec/fardo-sec.sh'" /data/data/com.ter
     source /data/data/com.termux/files/usr/etc/bash.bashrc
 fi
 
-echo "Creating Widgets"
+echo "Creating Widgets..."
 
 echo "$HOME/fardo-sec/tools/glitch.sh" > $HOME/.shortcuts/glitch.sh
 chmod +x $HOME/.shortcuts/glitch.sh
+
+
+echo "Giving permission to execute..."
+chmod +x $HOME/fardo-sec/tools/help.sh 
+chmod +x $HOME/fardo-sec/tools/glitch.sh
+chmod +x $HOME/fardo-sec/tools/create_alias.sh
 
 echo "Finished"
 
@@ -32,16 +38,16 @@ menu() {
     
     options=("Help" "Cameras" "Sherlock" "Mr.Holmes" "SSH" "Swarm" "Glitch" "Broker" "Wlan-F" "Create Alias (shortcut)" "Update Alias (manually)")
     commands=(
-        "chmod +x $HOME/fardo-sec/tools/help.sh && $HOME/fardo-sec/tools/help.sh"
+        "$HOME/fardo-sec/tools/help.sh"
         "echo 'Você escolheu Cameras.'"
         "echo 'Você escolheu Sherlock.'"
         "echo 'Você escolheu Holmes.'"
         "echo 'Você escolheu SSH.'"
         "echo 'Você escolheu Swarm.'"
-        "chmod +x $HOME/fardo-sec/tools/glitch.sh && $HOME/fardo-sec/tools/glitch.sh"
+        "$HOME/fardo-sec/tools/glitch.sh"
         "echo 'Broker choice'"
         "echo 'Wlan-F'"
-        "chmod +x $HOME/fardo-sec/tools/create_alias.sh && $HOME/fardo-sec/tools/create_alias.sh"
+        "$HOME/fardo-sec/tools/create_alias.sh"
         "source /data/data/com.termux/files/usr/etc/bash.bashrc && clear && echo Alias updated"
     )
     echo $(pwd)
