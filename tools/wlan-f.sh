@@ -37,7 +37,7 @@ while IFS= read -r line; do
 
         # Calcular o valor absoluto do RSSI usando awk
         rssi_abs=$(awk -v rssi="$rssi" 'BEGIN {print int(rssi < 0 ? -rssi : rssi)}')
-        echo "SSID: $ssid - RSSI: $rssi_abs"
+        echo "SSID: $ssid - RSSI: $rssi"
         # Atualizar o SSID com o valor de RSSI mais próximo de zero encontrado até agora
         if (( rssi_abs < min_rssi )); then
             min_rssi=$rssi_abs
