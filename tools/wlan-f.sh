@@ -32,7 +32,7 @@ while IFS= read -r line; do
     # Verificar se a linha contém o campo "ssid"
     if [[ $line == *"ssid"* ]]; then
         ssid=$(echo "$line" | awk -F'"' '{print $4}')  # Extrair o SSID
-        rssi=$(echo "$line" | awk -F'"' '{print $(NF-1)}')  # Extrair o RSSI
+        rssi=$(echo "$line" | awk -F'"' '{print $8}')  # Extrair o RSSI
 
         # Atualizar o SSID com o menor valor de RSSI encontrado até agora
         if (( rssi < min_rssi )); then
