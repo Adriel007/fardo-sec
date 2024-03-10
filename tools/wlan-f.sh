@@ -24,18 +24,19 @@ termux-wifi-enable true
 # Executar a varredura Wi-Fi e armazenar a saída em wifi_info
 wifi_info=$(termux-wifi-scaninfo)
 
-# Extrair o menor RSSI e o SSID correspondente
-min_rssi=9999
-min_ssid=""
+# Extrair o maior RSSI próximo de 0 e o SSID correspondente
+max_rssi=0
+max_ssid=""
 for row in $(echo "${wifi_info}" | jq -c '.[]'); do
     ssid=$(echo "${row}" | jq -r '.ssid')
     rssi=$(echo "${row}" | jq -r '.rssi')
-    if [ "${rssi}" -lt "${min_rssi}" ]; then
-        min_rssi="${rssi}"
-        min_ssid="${ssid}"
+    abs_rssi=${rssi#-}  # remove o sinal negativo
+    if [ "${abs_rssi}" -lt "${max_rssi}" ]; then
+        max_rssi="${abs_rssi}"
+        max_ssid="${ssid}"
     fi
 done
 
-# Exibir o menor RSSI e o SSID correspondente na tela
-echo "Menor RSSI: ${min_rssi}"
-echo "SSID correspondente: ${min_ssid}"
+# Exibir o maior RSSI próximo de 0 e o SSID correspondente na tela
+echo "Maior RSSI próximo de 0: -${max_rssi}"
+echo "SSID correspondente: ${max_ssid}"
