@@ -1,2 +1,2 @@
-art=$(<./art/interrogation.txt)
+art=$(<$HOME/fardo-sec/art/interrogation.txt)
 echo "$art"

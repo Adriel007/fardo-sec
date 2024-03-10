@@ -10,7 +10,7 @@ read -p "Your choice: " choice
 
 case $choice in
     0)
-        ./fardo-sec.sh
+        $HOME/fardo-sec.sh
         ;;
     1)
         xdg-open 'https://egov.santos.sp.gov.br/santosmapeada/Gestao/Cameras/MapaCamera/'
@@ -19,6 +19,6 @@ case $choice in
         xdg-open 'https://dinamicadoar.com.br/p/61/-cameras-ao-vivo-sao-vicente-sp-itarare/'
         ;;
     *)
-        ./cameras.sh
+        $HOME/cameras.sh
         ;;
 esac
