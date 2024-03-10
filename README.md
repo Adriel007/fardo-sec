@@ -4,7 +4,7 @@
 
 Tools:
 
-- `Cameras`: Shortcut to access traffic cameras.
+- `CCTV`: Shortcut to access traffic cameras.
 - `Sherlock`: Hunt down social media accounts by username across social networks.
 - `Mr.Holmes`: Mr.Holmes is an information gathering tool (OSINT).
 - `SSH`: Connect to SSH servers.
@@ -100,7 +100,15 @@ Code to remove directory, alias and shortcuts:
 cd $HOME
 lsof +D $HOME/fardo-sec
 rm -rf $HOME/fardo-sec
-rm $HOME/.shortcuts/glitch.sh
+rm $HOME/.shortcuts/wlan-f.sh
+rm $HOME/.shortcuts/cctv.sh
+rm $HOME/.shortcuts/ssh.sh
+rm $HOME/.shortcuts/sherlock.sh
+rm $HOME/.shortcuts/broker.sh
+rm $HOME/.shortcuts/swarm.sh
+rm $HOME/.shortcuts/wlan-f.sh
+rm $HOME/.shortcuts/wlan-f.sh
+
 sed -i "/alias fardo-sec='$HOME\/fardo-sec\/fardo-sec.sh'/d" /data/data/com.termux/files/usr/etc/bash.bashrc
 source /data/data/com.termux/files/usr/etc/bash.bashrc
 ```

@@ -45,7 +45,7 @@ FONT_RESET="\e[0m"
 menu() {
     clear
     
-    options=("Help" "Cameras" "Sherlock" "Mr.Holmes" "SSH" "Swarm" "Broker" "Wlan-F" "Create Alias (shortcut)" "Update Alias (manually)")
+    options=("Help" "CCTV" "Sherlock" "Mr.Holmes" "SSH" "Swarm" "Broker" "Wlan-F" "Create Alias (shortcut)" "Update Alias (manually)")
     commands=(
         "$HOME/fardo-sec/tools/help.sh"
         "echo 'Você escolheu Cameras.'"
@@ -58,7 +58,7 @@ menu() {
         "$HOME/fardo-sec/tools/create_alias.sh"
         "source /data/data/com.termux/files/usr/etc/bash.bashrc && clear && echo Alias updated"
     )
-    echo $(pwd)
+
     echo -e "${FONT_RED}$(figlet Fardo - Sec)${FONT_RESET}"
     echo "Tools:"
     for i in "${!options[@]}"; do
