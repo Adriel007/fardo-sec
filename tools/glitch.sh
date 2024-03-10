@@ -20,20 +20,42 @@ done
 
 echo CTRL+C to exit
 
-interface=$(ip route | awk '/default/ { print $5 }')
+# Função para obter o prefixo da rede
+get_network_prefix() {
+    local ip=$(ip route | grep default | awk '{print $3}')
+    local mask=$(ifconfig | grep -A 1 "$ip" | tail -n 1 | awk '{print $4}')
+    local prefix=$(echo "$mask" | tr '.' ' ' | awk '{print $1}')
+    echo "$prefix"
+}
 
-ip_network=$(ip route | awk '/default/ { print $3 }' | cut -d"." -f1-3)
+# Função para gerar um IP aleatório com base no prefixo da rede
+generate_random_ip() {
+    local prefix="$1"
+    case "$prefix" in
+        10)
+            echo "10.$((RANDOM % 256)).$((RANDOM % 256)).$((RANDOM % 254 + 1))"
+            ;;
+        172)
+            echo "172.$((RANDOM % 16 + 16)).$((RANDOM % 256)).$((RANDOM % 254 + 1))"
+            ;;
+        192)
+            echo "192.168.$((RANDOM % 256)).$((RANDOM % 254 + 1))"
+            ;;
+        *)
+            echo "Prefixo de rede não suportado"
+            ;;
+    esac
+}
 
+# Obter a interface de rede padrão
+interface=$(ip route | grep default | awk '{print $5}')
+
+# Loop infinito para alterar o IP
 while true; do
-    ip_lastoctet=$(( $RANDOM % 254 + 1 ))
-    new_ip="${ip_network}.${ip_lastoctet}"
-
-    new_mac=$(openssl rand -hex 6 | sed 's/\(..\)/\1:/g; s/.$//')
-
-    su -c "ip addr flush dev $interface && ip addr add $new_ip/24 dev $interface && ip link set dev $interface down && ip link set dev $interface address $new_mac && ip link set dev $interface up"
-
-    echo "Novo endereço IP: $new_ip"
-    echo "Novo endereço MAC: $new_mac"
-
-    sleep 5
+    prefix=$(get_network_prefix)
+    new_ip=$(generate_random_ip "$prefix")
+    echo "Configurando novo IP: $new_ip"
+    ip addr flush dev "$interface"
+    ip addr add "$new_ip"/24 dev "$interface"
+    sleep 60  # Altera o IP a cada 60 segundos
 done
