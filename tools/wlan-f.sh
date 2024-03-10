@@ -1,4 +1,5 @@
 #!/data/data/com.termux/files/usr/bin/bash
+
 clear
 FONT_GREEN="\e[32m"
 FONT_RESET="\e[0m"
@@ -21,28 +22,23 @@ done
 
 termux-wifi-enable true
 
-
-
-
-
 wifi_info=$(termux-wifi-scaninfo)
-
-echo "Saída do termux-wifi-scaninfo:"
-echo "$wifi_info"
-
 
 min_rssi=-100
 min_ssid=""
 
-# Iterar sobre cada entrada no JSON
+# Iterar sobre cada linha na saída
 while IFS= read -r line; do
-    ssid=$(echo "$line" | grep -oP '(?<="ssid": ")[^"]+')
-    rssi=$(echo "$line" | grep -oP '(?<="rssi": )[^,]+')
+    # Verificar se a linha contém o campo "ssid"
+    if [[ $line == *"ssid"* ]]; then
+        ssid=$(echo "$line" | awk -F'"' '{print $4}')  # Extrair o SSID
+        rssi=$(echo "$line" | awk -F'"' '{print $(NF-1)}')  # Extrair o RSSI
 
-    # Atualizar o SSID com o menor valor de RSSI encontrado até agora
-    if (( rssi < min_rssi )); then
-        min_rssi=$rssi
-        min_ssid=$ssid
+        # Atualizar o SSID com o menor valor de RSSI encontrado até agora
+        if (( rssi < min_rssi )); then
+            min_rssi=$rssi
+            min_ssid=$ssid
+        fi
     fi
 done <<< "$wifi_info"
 
