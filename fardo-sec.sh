@@ -11,7 +11,7 @@ if ! [ -d "sherlock" ]; then
 fi
 
 if ! [ -d "Mr.Holmes" ]; then
-    #echo "Installing..."
+    echo "Installing..."
     
     #git clone https://github.com/MrHolmes1337/Mr.Holmes.git
 
