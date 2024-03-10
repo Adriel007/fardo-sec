@@ -11,7 +11,6 @@ echo -e "${FONT_GREEN}Sherlock${FONT_RESET}: Hunt down social media accounts by 
 echo -e "${FONT_GREEN}Mr.Holmes${FONT_RESET}: Mr.Holmes is a information gathering tool (OSINT)."
 echo -e "${FONT_GREEN}SSH${FONT_RESET}: Connect to SSH servers."
 echo -e "${FONT_GREEN}Swarm${FONT_RESET}: Multi-threaded DoS attack."
-echo -e "${FONT_GREEN}Glitch${FONT_RESET}: Periodic automatic change of IP and MAC."
 echo -e "${FONT_GREEN}Broker${FONT_RESET}: Router admin bruteforce + dictionary attack."
 echo -e "${FONT_GREEN}Wlan-F${FONT_RESET}: Connect to a Wi-Fi network. with bruteforce and dictionary methods."
 echo -e "${FONT_GREEN}Create Alias (shortcut)${FONT_RESET}: Create a custom shortcut in home directory."
