@@ -38,7 +38,7 @@ menu() {
         "echo 'Wlan-F'"
         "chmod +x ./tools/create_alias.sh && ./tools/create_alias.sh"
         "source /data/data/com.termux/files/usr/etc/bash.bashrc && clear && echo Alias updated"
-
+    )
     echo $(pwd)
     echo -e "${FONT_RED}$(figlet Fardo - Sec)${FONT_RESET}"
     echo "Tools:"
