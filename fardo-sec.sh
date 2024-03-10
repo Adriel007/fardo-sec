@@ -27,13 +27,13 @@ fi
 
 echo "Creating Widgets..."
 
-echo $HOME/fardo-sec/tools/glitch.sh > $HOME/.shortcuts/glitch.sh
-chmod +x $HOME/.shortcuts/glitch.sh
+echo $HOME/fardo-sec/tools/wlan-f.sh > $HOME/.shortcuts/wlan-f.sh
+chmod +x $HOME/.shortcuts/wlan-f.sh
 
 
 echo "Giving permission to execute..."
 chmod +x $HOME/fardo-sec/tools/help.sh 
-chmod +x $HOME/fardo-sec/tools/glitch.sh
+chmod +x $HOME/fardo-sec/tools/wlan-f.sh
 chmod +x $HOME/fardo-sec/tools/create_alias.sh
 
 echo "Finished"
