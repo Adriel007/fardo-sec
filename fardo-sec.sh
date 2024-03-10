@@ -58,8 +58,7 @@ menu() {
         echo -e "${FONT_GREEN}$((i+1))${FONT_RESET}) ${options[$i]}"
     done
 
-    echo -e "\n${FONT_GREEN}0${FONT_RESET}) Exit"
-    echo -e "${FONT_RED}X${FONT_RESET}) Uninstall\n\n"
+    echo -e "\n${FONT_GREEN}0${FONT_RESET}) Exit\n\n"
 
     read -p "Your choice: " choice
 
@@ -69,15 +68,6 @@ menu() {
         menu
     elif [[ "$choice" -eq 0 ]]; then
         clear
-        exit 0
-    elif [[ "$choice" -eq "x" ]]; then
-        clear
-        cd ..
-        lsof +D $HOME/fardo-sec
-        rm -rf $HOME/fardo-sec
-        rm $HOME/.shortcuts/glitch.sh
-        sed -i "/alias fardo-sec='$HOME\/fardo-sec\/fardo-sec.sh'/d" /data/data/com.termux/files/usr/etc/bash.bashrc
-        source /data/data/com.termux/files/usr/etc/bash.bashrc
         exit 0
     else
         menu

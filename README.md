@@ -91,6 +91,19 @@ To use Fardo-Sec, follow these steps:
 
 6. To exit the Fardo-Sec menu, select the "Exit" option.
 
+### Uninstall:
+
+Code to remove directory, alias and shortcuts:
+
+```bash
+cd $HOME
+lsof +D $HOME/fardo-sec
+rm -rf $HOME/fardo-sec
+rm $HOME/.shortcuts/glitch.sh
+sed -i "/alias fardo-sec='$HOME\/fardo-sec\/fardo-sec.sh'/d" /data/data/com.termux/files/usr/etc/bash.bashrc
+source /data/data/com.termux/files/usr/etc/bash.bashrc
+```
+
 ### Credits:
 
 - [Mr.Holmes](https://github.com/Lucksi/Mr.Holmes)
