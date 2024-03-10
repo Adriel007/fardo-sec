@@ -31,7 +31,7 @@ min_rssi=100  # Inicializar com um valor grande (positivo)
 echo ----------------------------------------
 while IFS= read -r line; do
     # Verificar se a linha contém o campo "ssid"
-    if [[ $line == *"ssid"* && $line != *"bssid"* ]] then
+    if [[ $line == *"ssid"*]] then
         ssid=$(echo "$line" | awk -F'"' '{print $4}')  # Extrair o SSID
         rssi=$(echo "$line" | awk -F'"' '{print $8}')  # Extrair o RSSI
 
