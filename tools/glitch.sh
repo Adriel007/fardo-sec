@@ -7,13 +7,17 @@ echo "$art"
 read -p "Press ENTER to start GLITCH"
 
 for i in {9..1}; do
-    clear
-    if [ $((i % 2)) -eq 0 ]; then
-        echo -e "${FONT_GREEN}$art${FONT_RESET}"
-    else
-        echo -e "${FONT_RESET}$art"
-    fi
-    sleep 0.$i
+    for ((j=0; j<4; j++)); do
+        clear
+        if [ $((i % 2)) -eq 0 ]; then
+            echo -e "${FONT_RESET}$art"
+        else
+            echo -e "${FONT_GREEN}$art${FONT_RESET}"
+        fi
+        sleep 0.$i
+        clear
+        sleep 0.$i
+    done
 done
 
 read -p "Press ENTER to continue..."
