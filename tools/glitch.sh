@@ -20,40 +20,20 @@ done
 
 echo CTRL+C to exit
 
-interface=$(ip route | awk '$1 == "default" {print $5}')
-echo "Interface de rede: $interface"
+interface=$(ip route | awk '/default/ { print $5 }')
 
-ip_address=$(ip -o -4 addr show $interface | awk '{print $4}')
-subnet_mask=$(ip -o -4 addr show $interface | awk '{print $6}')
-echo "IP e máscara de rede: $ip_address $subnet_mask"
-
-generate_random_ip() {
-    base_ip=$(echo $ip_address | cut -d'.' -f1-3)
-    last_octet=$(shuf -i 2-254 -n 1)
-    random_ip="$base_ip.$last_octet"
-    echo "$random_ip"
-}
-
-generate_random_mac() {
-    mac=$(printf '52:54:%02x:%02x:%02x:%02x\n' $[RANDOM%256] $[RANDOM%256] $[RANDOM%256] $[RANDOM%256])
-    echo "$mac"
-}
-
-change_ip_and_mac() {
-    random_ip=$(generate_random_ip)
-    random_mac=$(generate_random_mac)
-
-    echo "Alterando IP para: $random_ip"
-    sudo ip addr flush dev $interface
-    sudo ip addr add $random_ip$subnet_mask dev $interface
-
-    echo "Alterando MAC para: $random_mac"
-    sudo ip link set dev $interface down
-    sudo ip link set dev $interface address $random_mac
-    sudo ip link set dev $interface up
-}
+ip_network=$(ip route | awk '/default/ { print $3 }' | cut -d"." -f1-3)
 
 while true; do
-    change_ip_and_mac
-    sleep 10
+    ip_lastoctet=$(( $RANDOM % 254 + 1 ))
+    new_ip="${ip_network}.${ip_lastoctet}"
+
+    new_mac=$(openssl rand -hex 6 | sed 's/\(..\)/\1:/g; s/.$//')
+
+    su -c "ip addr flush dev $interface && ip addr add $new_ip/24 dev $interface && ip link set dev $interface down && ip link set dev $interface address $new_mac && ip link set dev $interface up"
+
+    echo "Novo endereço IP: $new_ip"
+    echo "Novo endereço MAC: $new_mac"
+
+    sleep 2
 done
