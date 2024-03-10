@@ -26,6 +26,7 @@ wifi_info=$(termux-wifi-scaninfo)
 
 min_diff=999999  # Um número grande
 min_ssid=""
+min_rssi=""
 
 # Iterar sobre cada linha na saída
 while IFS= read -r line; do
@@ -40,9 +41,11 @@ while IFS= read -r line; do
         if ((diff < min_diff)); then
             min_diff=$diff
             min_ssid=$ssid
+            min_rssi=$rssi
         fi
     fi
 done <<< "$wifi_info"
 
-
-echo "SSID com menor RSSI: $min_ssid"
+echo "SSID com valor de RSSI mais próximo de zero:"
+echo "SSID: $min_ssid"
+echo "RSSI: $min_rssi"
