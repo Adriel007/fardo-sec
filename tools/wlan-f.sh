@@ -1,7 +1,9 @@
 #!/data/data/com.termux/files/usr/bin/bash
 clear
-
+FONT_GREEN="\e[32m"
+FONT_RESET="\e[0m"
 art=$(<$HOME/fardo-sec/art/wifi.txt)
+
 echo "$art"
 read -p "Press ENTER to continue..."
 
@@ -19,4 +21,4 @@ done
 
 termux-wifi-enable true
 
-termuxtermux-wifi-connectioninfo
+termux-wifi-connectioninfo
