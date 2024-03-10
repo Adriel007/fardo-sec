@@ -35,5 +35,5 @@ while true; do
     echo "Novo endereço IP: $new_ip"
     echo "Novo endereço MAC: $new_mac"
 
-    sleep 2
+    sleep 5
 done

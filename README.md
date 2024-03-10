@@ -108,3 +108,4 @@ source /data/data/com.termux/files/usr/etc/bash.bashrc
 
 - [Mr.Holmes](https://github.com/Lucksi/Mr.Holmes)
 - [Sherlock](https://github.com/sherlock-project/sherlock)
+- [ipChange](https://github.com/lucadivit/ipChange)
