@@ -1,6 +1,6 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
-diretorio=$0
+diretorio=$1
 
 # Contagem inicial de arquivos .txt
 total=$(ls -1 "$diretorio"/*.txt 2>/dev/null | wc -l)
