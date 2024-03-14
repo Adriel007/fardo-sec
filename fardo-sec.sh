@@ -30,8 +30,8 @@ echo "Creating Widgets..."
 echo $HOME/fardo-sec/tools/wlan-f.sh > $HOME/.shortcuts/wlan-f.sh
 chmod +x $HOME/.shortcuts/wlan-f.sh
 
-
 echo "Giving permission to execute..."
+chmod +x $HOME/fardo-sec/animation.sh
 chmod +x $HOME/fardo-sec/tools/help.sh 
 chmod +x $HOME/fardo-sec/tools/wlan-f.sh
 chmod +x $HOME/fardo-sec/tools/create_alias.sh
