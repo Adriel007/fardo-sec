@@ -27,8 +27,20 @@ fi
 
 echo "Creating Widgets..."
 
-echo $HOME/fardo-sec/tools/wlan-f.sh > $HOME/.shortcuts/wlan-f.sh
-chmod +x $HOME/.shortcuts/wlan-f.sh
+scripts=(
+    "$HOME/fardo-sec/tools/wlan-f.sh:~/.shortcuts/wlan-f.sh",
+    
+)
+
+for mapping in "${scripts[@]}"; do
+    script_path="${mapping%%:*}"
+    shortcut_path="${mapping##*:}"
+
+    echo "$script_path" > "$shortcut_path"
+    chmod +x "$shortcut_path"
+
+    echo "Created shortcut for $script_path at $shortcut_path"
+done
 
 echo "Giving permission to execute..."
 chmod +x $HOME/fardo-sec/animation.sh
