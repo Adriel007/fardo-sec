@@ -1,3 +1,5 @@
 .env
 node_modules
 gif2ascii.js
+package.json
+package-lock.json
