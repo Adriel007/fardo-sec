@@ -80,7 +80,7 @@ menu() {
     if [[ "$choice" -ge 1 && "$choice" -lt "${#options[@]}" ]]; then
         eval "${commands[$choice-1]}"
         if $keyboard; then
-            sleep 0.5
+            sleep 2
         fi
         read -p "Press ENTER to continue..."
         menu
