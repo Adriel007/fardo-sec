@@ -81,6 +81,7 @@ menu() {
         eval "${commands[$choice-1]}"
         if $keyboard; then
             sleep 0.5
+        fi
         read -p "Press ENTER to continue..."
         menu
     elif [[ "$choice" -eq 0 ]]; then
@@ -91,6 +92,7 @@ menu() {
             keyboard=true
         else
             keyboard=false
+        fi
         menu
     else
         menu
