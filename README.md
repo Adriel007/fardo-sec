@@ -96,6 +96,16 @@ To use Fardo-Sec, follow these steps:
 
 6. To exit the Fardo-Sec menu, select the "Exit" option.
 
+### Updating:
+
+Code to update Fardo-Sec with the last version from GitHub:
+
+```bash
+cd $HOME/fardo-sec
+git reset --hard origin/branch_name
+git pull
+```
+
 ### Uninstall:
 
 Code to remove directory, alias and shortcuts:
