@@ -43,6 +43,7 @@ pkg install wireless-tools -y
 pkg install iproute2 -y
 pkg install jq -y
 pkg install wpa-supplicant -y
+pkg install proot -y
 
 apt install -y git python3
 ```
@@ -56,6 +57,7 @@ apt install -y git python3
 - `Wireless Tools` Package
 - `Command-line JSON processor` Package
 - `WPA Supplicant` Package
+- `PRoot` Package
 
 - `Python 3` Advanced Package Tool
 

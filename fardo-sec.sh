@@ -7,7 +7,10 @@ if ! [ -d "sherlock" ]; then
 fi
 
 if ! [ -d "Mr.Holmes" ]; then
-    git clone https://github.com/MrHolmes1337/Mr.Holmes.git
+    git clone https://github.com/Lucksi/Mr.Holmes
+    cd Mr.Holmes
+    proot -0 chmod +x install_Termux.sh
+    ./install_Termux.sh
 fi
 
 echo "Finishing..."
