@@ -102,7 +102,7 @@ Code to update Fardo-Sec with the last version from GitHub:
 
 ```bash
 cd $HOME/fardo-sec
-git reset --hard origin/branch_name
+git reset --hard
 git pull
 ```
 
