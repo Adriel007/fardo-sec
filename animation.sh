@@ -1,12 +1,18 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
-diretorio=$1
+dir=$1
 
-total=$(ls -1 "$diretorio"/*.txt 2>/dev/null | wc -l)
+if [ -z "$dir" ]; then
+    echo "Usage: $0 <dir>"
+    echo "Arts:"
+    echo "ls -d $HOME/fardo-sec/art/*"
+    exit 1
+fi
+total=$(ls -1 "$HOME/fardo-sec/art/$dir"/*.txt 2>/dev/null | wc -l)
 
 while true; do
     for ((i = 0; i < total; i++)); do
-        arquivo="$diretorio/$i.txt"
+        arquivo="$dir/$i.txt"
         if [ -f "$arquivo" ]; then
             cat "$arquivo"
             sleep 0.2

@@ -2,20 +2,12 @@
 echo "Starting..."
 
 if ! [ -d "sherlock" ]; then
-    echo "Installing..."
-
-    #git clone https://github.com/sherlock-project/sherlock.git
-    #python3 -m pip install -r $HOME/fardo-sec/sherlock/requirements.txt
-
-    #echo "Installation finished"
+    git clone https://github.com/sherlock-project/sherlock.git
+    python3 -m pip install -r $HOME/fardo-sec/sherlock/requirements.txt
 fi
 
 if ! [ -d "Mr.Holmes" ]; then
-    echo "Installing..."
-    
-    #git clone https://github.com/MrHolmes1337/Mr.Holmes.git
-
-    #echo "Installation finished"
+    git clone https://github.com/MrHolmes1337/Mr.Holmes.git
 fi
 
 echo "Finishing..."
