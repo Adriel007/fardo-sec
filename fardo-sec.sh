@@ -48,6 +48,7 @@ echo "Finished"
 FONT_GREEN="\e[32m"
 FONT_RED="\e[31m"
 FONT_RESET="\e[0m"
+keyboard=false
 
 menu() {
     clear
@@ -72,17 +73,25 @@ menu() {
         echo -e "${FONT_GREEN}$((i+1))${FONT_RESET}) ${options[$i]}"
     done
 
-    echo -e "\n${FONT_GREEN}0${FONT_RESET}) Exit\n\n"
-
+    echo -e "\n${FONT_GREEN}0${FONT_RESET}) Exit\n"
+    echo -e "\n${FONT_GREEN}K${FONT_RESET}) If you are using an physical keyboard\n\n"
     read -p "Your choice: " choice
 
     if [[ "$choice" -ge 1 && "$choice" -lt "${#options[@]}" ]]; then
         eval "${commands[$choice-1]}"
+        if keyboard; then
+            sleep 0.5
         read -p "Press ENTER to continue..."
         menu
     elif [[ "$choice" -eq 0 ]]; then
         clear
         exit 0
+    elif [[ "$choice" -eq "K" ]]; then
+        if ! $keyboard; then
+            keyboard=true
+        else
+            keyboard=false
+        menu
     else
         menu
     fi
