@@ -90,8 +90,10 @@ menu() {
     elif [[ "$choice" -eq "K" ]]; then
         if [ "$keyboard" = false ]; then
             keyboard=true
+            echo "Keyboard mode enabled, delay between commands set to 2 seconds"
         else
             keyboard=false
+            echo "Keyboard mode disabled"
         fi
         menu
     else
