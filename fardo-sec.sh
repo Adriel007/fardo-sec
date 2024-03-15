@@ -91,6 +91,7 @@ menu() {
         if [ "$keyboard" = false ]; then
             keyboard=true
             echo "Keyboard mode enabled, delay between commands set to 2 seconds"
+            sleep 2
         else
             keyboard=false
             echo "Keyboard mode disabled"
