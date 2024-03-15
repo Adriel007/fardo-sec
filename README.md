@@ -104,6 +104,8 @@ Code to update Fardo-Sec with the last version from GitHub:
 cd $HOME/fardo-sec
 git reset --hard
 git pull
+chmod +x ./fardo-sec.sh
+./fardo-sec.sh
 ```
 
 ### Uninstall:
