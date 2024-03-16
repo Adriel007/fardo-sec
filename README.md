@@ -42,7 +42,10 @@ pkg install figlet -y
 pkg install iproute2 -y
 pkg install jq -y
 pkg install proot -y
+pkg install w-get -y
 
+apt install -y git python
+apt install -y git python2
 apt install -y git python3
 ```
 
@@ -54,8 +57,13 @@ apt install -y git python3
 - `FIGlet` Package
 - `Command-line JSON processor` Package
 - `PRoot` Package
+- `W-Get` Package
 
+- `Python` Advanced Package Tool
+- `Python 2` Advanced Package Tool
 - `Python 3` Advanced Package Tool
+
+All requirements (except git) have an auto install file.
 
 ### Installation Steps:
 
@@ -63,7 +71,7 @@ apt install -y git python3
 git clone https://github.com/adriel007/fardo-sec
 cd ./fardo-sec
 chmod +x ./fardo-sec.sh
-./fardo-sec.sh
+./fardo-sec.sh --install
 ```
 
 1. This script requires the pkg `git` to be installed.
@@ -104,6 +112,7 @@ git reset --hard
 git pull
 chmod +x ./fardo-sec.sh
 ./fardo-sec.sh
+fardo-sec --update
 ```
 
 ### Uninstall:

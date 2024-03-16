@@ -6,7 +6,8 @@ clear
 echo -e "${FONT_RED}$(figlet Fardo - Sec)${FONT_RESET}"
 
 echo -e "You can execute an shortcut with ${FONT_GREEN}fardo-sec${FONT_RESET}\n"
-echo -e "You can update the fardo-sec with ${FONT_GREEN}git pull${FONT_RESET}\n\n"
+echo -e "You can update the fardo-sec with ${FONT_GREEN}fardo-sec --update${FONT_RESET}\n\n"
+
 echo -e "${FONT_GREEN}Cameras${FONT_RESET}: Shortcut to acess traffic cameras."
 echo -e "${FONT_GREEN}Sherlock${FONT_RESET}: Hunt down social media accounts by username across social networks."
 echo -e "${FONT_GREEN}Mr.Holmes${FONT_RESET}: Mr.Holmes is a information gathering tool (OSINT)."

@@ -1,6 +1,22 @@
 #!/data/data/com.termux/files/usr/bin/bash
 echo "Starting..."
 
+if [$1 == "--update"]; then
+    echo "Updating..."
+    cd $HOME/fardo-sec
+    git reset --hard
+    git pull
+    chmod +x ./fardo-sec.sh
+    ./fardo-sec.sh
+    exit 0
+fi
+
+if [$1 == "--install"]; then
+    echo "Installing..."
+    chmod +x $HOME/fardo-sec/install.sh
+    $HOME/fardo-sec/install.sh
+fi
+
 if ! [ -d "sherlock" ]; then
     git clone https://github.com/sherlock-project/sherlock.git
     python3 -m pip install -r $HOME/fardo-sec/sherlock/requirements.txt
@@ -91,3 +107,14 @@ menu() {
 }
 
 menu
+
+#todo:
+######################################################
+#nmap
+
+#tor
+
+#apache2
+
+#art is loading screen
+######################################################
