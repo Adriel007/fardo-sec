@@ -74,7 +74,7 @@ menu() {
     done
 
     echo -e "\n${FONT_GREEN}0${FONT_RESET}) Exit"
-    echo -e "${FONT_GREEN}K${FONT_RESET}) If you are using an physical keyboard\n\n"
+    echo -e "${FONT_GREEN}123${FONT_RESET}) If you are using an physical keyboard\n\n"
     read -p "Your choice: " choice
 
     if [[ "$choice" -ge 1 && "$choice" -lt "${#options[@]}" ]]; then
@@ -87,7 +87,7 @@ menu() {
     elif [[ "$choice" -eq 0 ]]; then
         clear
         exit 0
-    elif [[ "$choice" == "K" || "$choice" == "k" ]]; then
+    elif [[ "$choice" -eq 123 ]]; then
         clear
         if [ "$keyboard" == false ]; then
             keyboard=true
