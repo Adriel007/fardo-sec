@@ -79,7 +79,7 @@ menu() {
 
     if [[ "$choice" -ge 1 && "$choice" -lt "${#options[@]}" ]]; then
         eval "${commands[$choice-1]}"
-        if [ "$keyboard" == true ]; then
+        if [ "$keyboard" -eq 1 ]; then
             sleep 2
         fi
         read -p "Press ENTER to continue..."
@@ -89,11 +89,11 @@ menu() {
         exit 0
     elif [[ "$choice" -eq 123 ]]; then
         clear
-        if [ "$keyboard" == false ]; then
-            keyboard=true
+        if [ "$keyboard" -eq 0 ]; then
+            keyboard=1
             echo "Keyboard mode enabled, delay between commands set to 2 seconds"
         else
-            keyboard=false
+            keyboard=0
             echo "Keyboard mode disabled"
         fi
         sleep 2
