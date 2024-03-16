@@ -48,7 +48,6 @@ echo "Finished"
 FONT_GREEN="\e[32m"
 FONT_RED="\e[31m"
 FONT_RESET="\e[0m"
-keyboard=false
 
 menu() {
     clear
@@ -73,8 +72,7 @@ menu() {
         echo -e "${FONT_GREEN}$((i+1))${FONT_RESET}) ${options[$i]}"
     done
 
-    echo -e "\n${FONT_GREEN}0${FONT_RESET}) Exit"
-    echo -e "${FONT_GREEN}123${FONT_RESET}) If you are using an physical keyboard\n\n"
+    echo -e "\n${FONT_GREEN}0${FONT_RESET}) Exit\n\n"
     read -p "Your choice: " choice
 
     if [[ "$choice" -ge 1 && "$choice" -lt "${#options[@]}" ]]; then
@@ -87,17 +85,6 @@ menu() {
     elif [[ "$choice" -eq 0 ]]; then
         clear
         exit 0
-    elif [[ "$choice" -eq 123 ]]; then
-        clear
-        if [ "$keyboard" -eq 0 ]; then
-            keyboard=1
-            echo "Keyboard mode enabled, delay between commands set to 2 seconds"
-        else
-            keyboard=0
-            echo "Keyboard mode disabled"
-        fi
-        sleep 2
-        menu
     else
         menu
     fi
